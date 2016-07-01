@@ -1,4 +1,5 @@
 export class Stats {
+    statarray:Array<Number>;
     averageAssists:number;
     averageChampionsKilled:number;
     averageCombatPlayerScore:number;
