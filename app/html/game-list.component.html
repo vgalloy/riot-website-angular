@@ -1,0 +1,28 @@
+<h1>{{title}}</h1>
+<div>
+    <input [(ngModel)]="summonerName" placeholder="Summoner Name"/>
+    <button (click)="find()">Find</button>
+</div>
+
+<h2>My games</h2>
+<ul class="games">
+    <li *ngFor="let game of gameList"
+        [class.selected]="game === selectedGame"
+        (click)="onSelect(game)">
+
+        <span class="badge">{{game.region}}</span>
+        <span class="badge">{{game.gameId}}</span>
+
+        {{game.kill}}/{{game.death}}/{{game.assist}}
+        champion id : {{game.championId}}
+        <div [hidden]="!game.visible">
+            Les details de la games
+        </div>
+    </li>
+</ul>
+<div *ngIf="selectedGame">
+    <h2>
+        {{selectedGame.id | uppercase}} Game
+    </h2>
+    <button (click)="gotoDetail()">View Details</button>
+</div>

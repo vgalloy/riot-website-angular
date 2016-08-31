@@ -2,18 +2,11 @@
 # Created by https://www.gitignore.io/api/intellij
 
 # User-specific stuff:
-.idea/workspace.xml
-.idea/vcs.xml
-.idea/jsLibraryMappings.xml
-
-# Gradle:
-.idea/libraries
+.idea/
 
 # *.iml
-# modules.xml
-/riot-website-angular.iml
+/*.iml
 /node_modules/
-/.idea/
 /typings/
 /npm-debug.log
 **.map
