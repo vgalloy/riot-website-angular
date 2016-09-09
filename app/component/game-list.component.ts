@@ -27,7 +27,7 @@ export class GameListComponent implements OnInit {
             let summonerId = params['summonerId'];
             let regionString:string = params['region'];
             let region = Region[regionString];
-            this.gameService.getGameList(Region.EUW, summonerId)
+            this.gameService.getGameList(region, summonerId)
                 .then(gameList => this.gameList = gameList);
         });
     }
@@ -42,9 +42,11 @@ export class GameListComponent implements OnInit {
     }
 
     onSelect(game:LastGame):void {
-
         game.visible = !game.visible;
-        console.log(game);
+        this.gameService.getTimeline(Region[game.region], game.gameId)
+            .then(timelines => {
+                console.log(timelines);
+            });
     }
 
 }

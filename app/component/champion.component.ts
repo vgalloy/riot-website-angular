@@ -12,7 +12,7 @@ import {ChampionService} from "../service/champion.service";
 })
 export class ChampionComponent {
     @Input() championId:number;
-    winRate:WinRate[];
+    winRates;
 
     constructor(private route:ActivatedRoute,
                 private gameService:GameService,
@@ -23,9 +23,9 @@ export class ChampionComponent {
 
     find():void {
         console.log(this.championId);
-        this.championService.getWinRate(this.championId).then(winRate => {
-            this.winRate = winRate;
-            console.log(this.winRate);
+        this.championService.getWinRate(this.championId).then(winRates => {
+            this.winRates = winRates;
+            console.log(this.winRates);
         });
     }
 
