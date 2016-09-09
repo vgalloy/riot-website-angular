@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import "rxjs/add/operator/toPromise";
 import {LastGame} from "../model/last-game";
+import {Region} from "../model/region";
 
 @Injectable()
 export class GameService {
@@ -9,10 +10,9 @@ export class GameService {
     constructor(private http:Http) {
     }
 
-    getGameList(summonerId:number, limit:number = 5):Promise<LastGame[]> {
-        console.log("game list", summonerId);
-
-        return this.http.get("http://server:8081/EUW/summoner/" + summonerId + "/lastGames?limit=" + limit)
+    getGameList(region:Region, summonerId:number, limit:number = 5):Promise<LastGame[]> {
+        console.log("Fetching lastGame : ", Region[region], summonerId);
+        return this.http.get("http://server:8081/" + Region[region] + "/summoner/" + summonerId + "/lastGames?limit=" + limit)
             .toPromise()
             .then(response => response.json() as LastGame[])
             .catch(this.handleError)

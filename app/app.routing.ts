@@ -16,7 +16,7 @@ const appRoutes: Routes = [
         component: SummonerComponent
     },
     {
-        path: 'summoner/:summonerId/gameList',
+        path: 'summoner/:region/:summonerId/gameList',
         component: GameListComponent
     },
     {

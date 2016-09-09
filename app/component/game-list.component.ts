@@ -14,7 +14,6 @@ import {Region} from "../model/region";
 export class GameListComponent implements OnInit {
     @Input() summonerName:string;
     gameList:LastGame[];
-    regions:Region[] = [Region.EUNE, Region.EUW];
 
     constructor(private route:ActivatedRoute,
                 private gameService:GameService,
@@ -25,16 +24,20 @@ export class GameListComponent implements OnInit {
 
     ngOnInit():void {
         this.route.params.forEach((params:Params) => {
-            let summonerId = +params['summonerId'];
-            this.gameService.getGameList(summonerId)
+            let summonerId = params['summonerId'];
+            let regionString:string = params['region'];
+            let region = Region[regionString];
+            this.gameService.getGameList(Region.EUW, summonerId)
                 .then(gameList => this.gameList = gameList);
         });
     }
 
     find():void {
         console.log(this.summonerName);
-        this.summonerService.getSummoner(this.summonerName).then(summoner => {
-            this.router.navigate(['/summoner', summoner.id, 'gameList']);
+        let region = Region.EUW;
+
+        this.summonerService.getSummoner(region, this.summonerName).then(summoner => {
+            this.router.navigate(['/summoner', Region[region], summoner.id, 'gameList']);
         });
     }
 

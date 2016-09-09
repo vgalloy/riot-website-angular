@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {Summoner} from "../model/summoner";
+import {Region} from "../model/region";
 
 @Injectable()
 export class SummonerService {
@@ -8,11 +9,8 @@ export class SummonerService {
     constructor(private http:Http) {
     }
 
-    getSummoner(summonerName:string):Promise<Summoner> {
-
-        let url = "http://server:8081/EUW/summoner/" + summonerName + "/byName";
-
-        return this.http.get(url)
+    getSummoner(region:Region, summonerName:string):Promise<Summoner> {
+        return this.http.get("http://server:8081/" + Region[region] + "/summoner/" + summonerName + "/byName")
             .toPromise()
             .then(response => response.json() as Summoner)
             .catch(this.handleError)
