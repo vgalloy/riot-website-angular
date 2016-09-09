@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { Router } from "@angular/router"
+import { Router } from "@angular/router";
 import { Summoner } from "../model/summoner";
 import { SummonerService } from "../service/summoner.service";
-import {Region} from "../model/region";
+import { Region } from "../model/region";
 
 @Component({
     selector: 'summoner',
@@ -11,7 +11,7 @@ import {Region} from "../model/region";
 })
 export class SummonerComponent implements OnInit {
     @Input() summonerName:string = "Ivaranne";
-    summoner: Summoner;
+    summoner:Summoner;
 
     constructor(private summonerService:SummonerService, private router:Router) {
 

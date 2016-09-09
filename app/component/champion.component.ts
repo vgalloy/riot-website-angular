@@ -1,9 +1,7 @@
-import {Component, Input} from "@angular/core";
-import {ActivatedRoute, Router} from "@angular/router";
-import {GameService} from "../service/game.service";
-import {WinRate} from "../model/win-rate";
-import {ChampionService} from "../service/champion.service";
-
+import { Component, Input } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { GameService } from "../service/game.service";
+import { ChampionService } from "../service/champion.service";
 
 @Component({
     selector: 'game-list',

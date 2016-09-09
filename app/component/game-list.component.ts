@@ -1,10 +1,9 @@
-import {Component, OnInit, Input} from "@angular/core";
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {GameService} from "../service/game.service";
-import {LastGame} from ".././model/last-game";
-import {SummonerService} from "../service/summoner.service";
-import {Region} from "../model/region";
-
+import { Component, OnInit, Input } from "@angular/core";
+import { ActivatedRoute, Params, Router } from "@angular/router";
+import { GameService } from "../service/game.service";
+import { LastGame } from ".././model/last-game";
+import { SummonerService } from "../service/summoner.service";
+import { Region } from "../model/region";
 
 @Component({
     selector: 'game-list',
@@ -48,5 +47,4 @@ export class GameListComponent implements OnInit {
                 console.log(timelines);
             });
     }
-
 }

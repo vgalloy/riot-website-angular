@@ -1,9 +1,9 @@
-import {Injectable} from "@angular/core";
-import {Http} from "@angular/http";
+import { Injectable } from "@angular/core";
+import { Http } from "@angular/http";
 import "rxjs/add/operator/toPromise";
-import {LastGame} from "../model/last-game";
-import {Region} from "../model/region";
-import {PlayerTimeline} from "../model/player-timeline";
+import { LastGame } from "../model/last-game";
+import { Region } from "../model/region";
+import { PlayerTimeline } from "../model/player-timeline";
 
 @Injectable()
 export class GameService {

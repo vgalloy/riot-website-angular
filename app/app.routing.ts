@@ -1,11 +1,10 @@
-import { ModuleWithProviders }  from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
+import { ModuleWithProviders } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 import { SummonerComponent } from "./component/summoner.component";
 import { GameListComponent } from "./component/game-list.component";
 import { ChampionComponent } from "./component/champion.component";
 
-const appRoutes: Routes = [
+const appRoutes:Routes = [
     {
         path: '',
         redirectTo: '/summoners',
@@ -25,5 +24,4 @@ const appRoutes: Routes = [
     }
 ];
 
-
-export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+export const routing:ModuleWithProviders = RouterModule.forRoot(appRoutes);
