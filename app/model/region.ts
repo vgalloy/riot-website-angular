@@ -1,3 +1,4 @@
 export enum Region {
-    EUW, EUNE
+    EUW = <any> "EUW",
+    EUNE = <any> "EUNE"
 }

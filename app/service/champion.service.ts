@@ -11,7 +11,7 @@ export class ChampionService {
     }
 
     getWinRate(championId:number):Promise<WinRate[]> {
-        return this.http.get("http://server:8081/champion/" + championId + "/winRate")
+        return this.http.get("http://149.202.166.194:8081/champion/" + championId + "/winRate")
             .toPromise()
             .then(response => response.json() as WinRate[])
             .catch(this.handleError)

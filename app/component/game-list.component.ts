@@ -37,13 +37,13 @@ export class GameListComponent implements OnInit {
         let region = Region.EUW;
 
         this.summonerService.getSummoner(region, this.summonerName).then(summoner => {
-            this.router.navigate(['/summoner', Region[region], summoner.id, 'gameList']);
+            this.router.navigate(['/summoner', region, summoner.id, 'gameList']);
         });
     }
 
     onSelect(game:LastGame):void {
         game.visible = !game.visible;
-        this.gameService.getTimeline(Region[game.region], game.gameId)
+        this.gameService.getTimeline(game.region, game.gameId)
             .then(timelines => {
                 console.log(timelines);
             });
