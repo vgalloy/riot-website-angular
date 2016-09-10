@@ -13,7 +13,7 @@ export class GameService {
 
     getGameList(region:Region, summonerId:number, limit:number = 5):Promise<LastGame[]> {
         console.log("Fetching lastGame : ", Region[region], summonerId);
-        return this.http.get("http://149.202.166.194:8081/" + Region[region] + "/summoner/" + summonerId + "/lastGames?limit=" + limit)
+        return this.http.get("http://149.202.166.194:8081/summoner/" + Region[region] + "/" +  summonerId + "/lastGames?limit=" + limit)
             .toPromise()
             .then(response => response.json() as LastGame[])
             .catch(this.handleError)

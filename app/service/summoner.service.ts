@@ -10,7 +10,7 @@ export class SummonerService {
     }
 
     getSummoner(region:Region, summonerName:string):Promise<Summoner> {
-        return this.http.get("http://149.202.166.194:8081/" + Region[region] + "/summoner/" + summonerName + "/byName")
+        return this.http.get("http://149.202.166.194:8081/summoner/" + Region[region] + "/" + summonerName + "/byName")
             .toPromise()
             .then(response => response.json() as Summoner)
             .catch(this.handleError)
