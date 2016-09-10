@@ -9,7 +9,7 @@ import { Region } from "../model/region";
     templateUrl: 'app/html/summoner.component.html'
     // styleUrls: ['app/css/summoner.component.css']
 })
-export class SummonerComponent implements OnInit {
+export class SummonerComponent {
     @Input() summonerName:string = "Ivaranne";
     summoner:Summoner;
 
@@ -17,13 +17,9 @@ export class SummonerComponent implements OnInit {
 
     }
 
-    ngOnInit():void {
-        this.summonerService.getSummoner(Region.EUW, "Ivaranne").then(summoner => this.summoner = summoner);
-    }
-
     find():void {
         console.log(this.summonerName);
-        this.summonerService.getSummoner(Region.EUW, this.summonerName).then(summoner => {
+        this.summonerService.getSummonerByName(Region.EUW, this.summonerName).then(summoner => {
             this.summoner = summoner;
             this.router.navigate(['/summoner', Region[Region.EUW], summoner.id, 'gameList']);
         });

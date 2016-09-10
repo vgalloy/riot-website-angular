@@ -4,6 +4,7 @@ import { GameService } from "../service/game.service";
 import { LastGame } from ".././model/last-game";
 import { SummonerService } from "../service/summoner.service";
 import { Region } from "../model/region";
+import { Summoner } from "../model/summoner";
 
 @Component({
     selector: 'game-list',
@@ -13,6 +14,7 @@ import { Region } from "../model/region";
 export class GameListComponent implements OnInit {
     @Input() summonerName:string;
     gameList:LastGame[];
+    name:string = "Summoner Name";
 
     constructor(private route:ActivatedRoute,
                 private gameService:GameService,
@@ -26,6 +28,10 @@ export class GameListComponent implements OnInit {
             let summonerId = params['summonerId'];
             let regionString:string = params['region'];
             let region = Region[regionString];
+
+            this.summonerService.getSummonerById(region, summonerId)
+                .then(summoner => this.name = summoner.name);
+
             this.gameService.getGameList(region, summonerId)
                 .then(gameList => this.gameList = gameList);
         });
@@ -35,7 +41,7 @@ export class GameListComponent implements OnInit {
         console.log(this.summonerName);
         let region = Region.EUW;
 
-        this.summonerService.getSummoner(region, this.summonerName).then(summoner => {
+        this.summonerService.getSummonerByName(region, this.summonerName).then(summoner => {
             this.router.navigate(['/summoner', region, summoner.id, 'gameList']);
         });
     }
