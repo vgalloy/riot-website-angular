@@ -1,11 +1,6 @@
-<h1>{{title}}</h1>
-<header>
-    <div class="title">
-        <a routerLink="/summoners" routerLinkActive="active">Summoners</a>
-    </div>
-
-    <div class="title">
-        <a routerLink="/champion" routerLinkActive="active">Champions</a>
-    </div>
-</header>
+<div class="header"><h1>{{title}}</h1></div>
+<div class="navigation">
+        <a class="navigation-title" routerLink="/summoners" routerLinkActive="active">Summoners</a>
+        <a class="navigation-title" routerLink="/champion" routerLinkActive="active">Champions</a>  
+</div>
 <router-outlet></router-outlet>
