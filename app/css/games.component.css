@@ -1,53 +1,59 @@
+.game-list {
+    background-color: #212223;
+    padding-left: 50px;
+    padding-right: 30px;
+}
+
 .selected {
     background-color: #CFD8DC !important;
     color: white;
 }
 
 .games {
-    margin: 0 0 2em 0;
+    margin: 0 0 0 0;
+    position: relative;
     list-style-type: none;
     padding: 0;
-    width: 15em;
+    margin: 0;
+    width: auto;
+    /*background: #212223;*/
 }
 
-.games li {
-    cursor: pointer;
-    position: relative;
-    left: 0;
-    background-color: #EEE;
-    margin: .5em;
-    padding: .3em 0;
-    height: 1.6em;
-    border-radius: 4px;
+.game-recap {
+    display: block;
+    /*left: 0;*/
+    background-color: #EDEEEF;
+    margin-bottom: 5px;
+    margin-left: 5px; 
+    padding: 0 0 0 20px;
+    /*border-radius: 4px;*/
 }
 
-.games li.selected:hover {
+/*.games li.selected:hover {
     background-color: #BBD8DC !important;
     color: white;
-}
+}*/
 
-.games li:hover {
+.game-recap:hover {
     color: #607D8B;
-    background-color: #DDD;
-    left: .1em;
+    background-color: #FFFFFF;
 }
 
 .games .text {
-    position: relative;
-    top: -3px;
+    position: absolute;
 }
 
-.games .badge {
-    display: inline-block;
-    font-size: small;
-    color: white;
-    padding: 0.8em 0.7em 0 0.7em;
-    background-color: #607D8B;
-    line-height: 1em;
+.badge {
+    color: #EDEEEF;
     position: relative;
-    left: -1px;
-    top: -4px;
-    height: 1.8em;
-    margin-right: .8em;
-    border-radius: 4px 0 0 4px;
+    padding: 15px;
+    transform: skew(-40deg);
+    background-color: #888;
+    text-decoration: none;
+    display: inline-block;
+    height: auto;
+    border-bottom: initial;
+}
+.badge-data{
+    transform: skew(40deg);
 }
