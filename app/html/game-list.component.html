@@ -10,7 +10,7 @@
     <ul class="games">
         <li class="li-game-recap" *ngFor="let game of gameList"
         [class.selected]="game === selectedGame"
-        (click)="onSelect(game)">
+        (click)="onSelect(game,gameList)">
         <div class="game-recap">
             <div class="badge"><div class="badge-data">Champion icon to add</div></div>
             <div class="badge"><div class="badge-data">{{game.region}}</div></div>

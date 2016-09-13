@@ -46,8 +46,13 @@ export class GameListComponent implements OnInit {
         });
     }
 
-    onSelect(game:LastGame):void {
+    onSelect(game:LastGame,gameList:LastGame[]):void {
+        gameList.forEach((gameHidden) =>{
+        if(gameHidden !== gameList[gameList.indexOf(game)])
+            gameHidden.visible = false;
+        });
         game.visible = !game.visible;
+
         this.gameService.getTimeline(game.region, game.gameId)
             .then(timelines => {
                 console.log(timelines);
