@@ -9,7 +9,7 @@ import { Summoner } from "../model/summoner";
 @Component({
     selector: 'game-list',
     templateUrl: 'app/html/game-list.component.html',
-    styleUrls: ['app/css/game-detail.component.css','app/css/games.component.css']
+    styleUrls: ['app/css/game-detail.component.css','app/css/games.component.css'],
 })
 export class GameListComponent implements OnInit {
     @Input() summonerName:string;

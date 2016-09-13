@@ -1,6 +1,6 @@
 .game-list {
     background-color: #212223;
-    padding-left: 50px;
+    padding-left: 30px;
     padding-right: 30px;
 }
 
@@ -12,23 +12,24 @@
 .games {
     margin: 0 0 0 0;
     position: relative;
+    display: inline-block;
     list-style-type: none;
     padding: 0;
     margin: 0;
     width: auto;
-    /*background: #212223;*/
 }
 
 .game-recap {
     display: block;
-    /*left: 0;*/
     background-color: #EDEEEF;
     margin-bottom: 5px;
     margin-left: 5px; 
     padding: 0 0 0 20px;
-    /*border-radius: 4px;*/
 }
-
+.li-game-recap{
+    transition-duration: 2s;
+    transform-style: ease;
+}
 /*.games li.selected:hover {
     background-color: #BBD8DC !important;
     color: white;
@@ -53,7 +54,22 @@
     display: inline-block;
     height: auto;
     border-bottom: initial;
+    min-width: 120px;
 }
 .badge-data{
     transform: skew(40deg);
+}
+.badge-details{
+    transition-timing-function: linear;
+    transition: height;
+    transition-duration: 2s;
+}
+.game-charts{
+    padding: 30px;
+    position: absolute;
+    display: inline-block;
+    width: 600px;
+}
+.game-details{ /* TODO - modify this thing; it's here for dummy */
+    width:600; 
 }

@@ -4,22 +4,28 @@
     <input [(ngModel)]="summonerName" placeholder="{{name}}"/>
     <button (click)="find()">Find</button>
 </div>
-<h1>{{title}}</h1>
-    <h2>My games</h2>
+    <h1>{{title}}</h1>
+
+    <h2>Match history</h2>
     <ul class="games">
-        <li *ngFor="let game of gameList"
+        <li class="li-game-recap" *ngFor="let game of gameList"
         [class.selected]="game === selectedGame"
         (click)="onSelect(game)">
         <div class="game-recap">
+            <div class="badge"><div class="badge-data">Champion icon to add</div></div>
             <div class="badge"><div class="badge-data">{{game.region}}</div></div>
             <div class="badge"><div class="badge-data">{{game.gameId}}</div></div>
             <div class="badge"><div class="badge-data">{{game.kill}}/{{game.death}}/{{game.assist}}</div></div>
             <div class="badge"><div class="badge-data">champion id : {{game.championId}}</div></div>
-            <div class="badgeMap"[hidden]="!game.visible">
-                Les details de la game
+            <div [hidden]="!game.visible">
+                <div class="game-details">Game details here : Win/lose/remake, Kill contribution, Firstblood taken/given, wards, Others champions, build order (if possible), minion, gold, gold/min, gold at 20 min, drake spawned/taken, game duration, etc</div>
                 <img src="app/image/map.png">
             </div>
             </div>
         </li>
     </ul>
+    <div class="game-charts">
+Map, charts, and graphs will end up there. Will be binded to the selected game of the list. If no game selected, will show stats about the summonner selected (rank, winrate, main roles, main champs, heatmap of position (considering vincent still able to keep up the storage of champion's position), game length average, etc)
 </div>
+</div>
+
