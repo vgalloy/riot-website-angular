@@ -5,7 +5,8 @@ import { LastGame } from ".././model/last-game";
 import { SummonerService } from "../service/summoner.service";
 import { Region } from "../model/region";
 import { Summoner } from "../model/summoner";
-
+import { PlayerTimeline } from "../model/player-timeline";
+    
 @Component({
     selector: 'game-list',
     templateUrl: 'app/html/game-list.component.html',
@@ -15,7 +16,8 @@ export class GameListComponent implements OnInit {
     @Input() summonerName:string;
     gameList:LastGame[];
     name:string = "Summoner Name";
-
+    summonerId:number;
+    timelines:Array<PlayerTimeline[]> = [];
     constructor(private route:ActivatedRoute,
                 private gameService:GameService,
                 private router:Router,
@@ -29,11 +31,24 @@ export class GameListComponent implements OnInit {
             let regionString:string = params['region'];
             let region = Region[regionString];
 
+            this.summonerId = summonerId;
+
             this.summonerService.getSummonerById(region, summonerId)
                 .then(summoner => this.name = summoner.name);
 
             this.gameService.getGameList(region, summonerId)
-                .then(gameList => this.gameList = gameList);
+                .then(gameList => { 
+                    this.gameList = gameList;
+                    this.gameList.forEach((game) => { 
+                        game.visible = false;
+                        
+                        this.gameService.getTimeline(region, game.gameId)
+                            .then(timelines => {
+                                                this.timelines.push(timelines);
+                                                });
+                    });
+                });   
+           
         });
     }
 
@@ -52,10 +67,5 @@ export class GameListComponent implements OnInit {
             gameHidden.visible = false;
         });
         game.visible = !game.visible;
-
-        this.gameService.getTimeline(game.region, game.gameId)
-            .then(timelines => {
-                console.log(timelines);
-            });
     }
 }

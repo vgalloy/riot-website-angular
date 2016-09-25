@@ -19,14 +19,14 @@
     width: auto;
 }
 
-.game-recap {
+.game-recap-header {
     display: block;
     background-color: #EDEEEF;
     margin-bottom: 5px;
     margin-left: 5px; 
     padding: 0 0 0 20px;
 }
-.li-game-recap{
+.li-game-recap-header{
     transition-duration: 2s;
     transform-style: ease;
 }
@@ -35,7 +35,7 @@
     color: white;
 }*/
 
-.game-recap:hover {
+.game-recap-header:hover {
     color: #607D8B;
     background-color: #FFFFFF;
 }
@@ -69,7 +69,13 @@
     position: absolute;
     display: inline-block;
     width: 600px;
+    height: auto;
 }
-.game-details{ /* TODO - modify this thing; it's here for dummy */
-    width:600; 
+.game-recap{ /* TODO - modify this thing; it's here for dummy */
+    width:800; 
+}
+
+.gameTimelineInfo{
+    display: inline-block;
+    margin: 5px;
 }

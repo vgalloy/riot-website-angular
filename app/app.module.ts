@@ -6,6 +6,7 @@ import { routing } from "./app.routing";
 import { AppComponent } from "./component/app.component";
 import { SummonerComponent } from "./component/summoner.component";
 import { GameListComponent } from "./component/game-list.component";
+import { GameDetailsComponent } from "./component/game-details.component";
 import { ChampionComponent } from "./component/champion.component";
 import { SummonerService } from "./service/summoner.service";
 import { GameService } from "./service/game.service";
@@ -22,6 +23,7 @@ import { ChampionService } from "./service/champion.service";
         AppComponent,
         SummonerComponent,
         GameListComponent,
+        GameDetailsComponent,
         ChampionComponent
     ],
     providers: [

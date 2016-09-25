@@ -8,24 +8,34 @@
 
     <h2>Match history</h2>
     <ul class="games">
-        <li class="li-game-recap" *ngFor="let game of gameList"
+        <li class="li-game-recap" *ngFor="let game of gameList; let i = index"
         [class.selected]="game === selectedGame"
         (click)="onSelect(game,gameList)">
-        <div class="game-recap">
+        <div class="game-recap-header">
             <div class="badge"><div class="badge-data">Champion icon to add</div></div>
             <div class="badge"><div class="badge-data">{{game.region}}</div></div>
             <div class="badge"><div class="badge-data">{{game.gameId}}</div></div>
             <div class="badge"><div class="badge-data">{{game.kill}}/{{game.death}}/{{game.assist}}</div></div>
             <div class="badge"><div class="badge-data">champion id : {{game.championId}}</div></div>
             <div [hidden]="!game.visible">
-                <div class="game-details">Game details here : Win/lose/remake, Kill contribution, Firstblood taken/given, wards, Others champions, build order (if possible), minion, gold, gold/min, gold at 20 min, drake spawned/taken, game duration, etc</div>
-                <img src="app/image/map.png">
+                <p>Temporary info format</p>
+                <div>Game details : Win/lose/remake, KC, wards, minion, gold/min, gold 20 min, drakes, duration, etc</div>
+                <div class="game-recap" *ngIf="timelines[i]">
+                    <div class="champions-recap" *ngFor="let gameTimeline of timelines[i]; let j = index ">
+                        <div class="champion-recap" *ngIf="gameTimeline">
+                            <div class="gameTimelineInfo">Player number : {{j}} </div>
+                            <div class="gameTimelineInfo">Player ID : {{gameTimeline.playerId}}</div>
+                            <div class="gameTimelineInfo">Gold at {{gameTimeline.gold[gameTimeline.gold.length -1].timestamp}} timestamp : {{gameTimeline.gold[gameTimeline.gold.length -1].value}}</div>
+                        </div>
+                    </div>
+                </div>  
             </div>
-            </div>
+        </div>
         </li>
     </ul>
     <div class="game-charts">
 Map, charts, and graphs will end up there. Will be binded to the selected game of the list. If no game selected, will show stats about the summonner selected (rank, winrate, main roles, main champs, heatmap of position (considering vincent still able to keep up the storage of champion's position), game length average, etc)
+<img src="app/image/map.png">
 </div>
 </div>
 
