@@ -8,9 +8,9 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "typings": "typings",
-    "clean" : "rm -rf dist",
-    "build_prod" : "npm run tsc && browserify -s main app/main.js > dist/bundle.js",
-    "serve" : "http-server . -p 3000"
+    "clean": "rm -rf dist",
+    "build_prod": "npm run tsc && browserify -s main app/main.js > dist/bundle.js",
+    "serve": "http-server . -p 3000"
   },
   "license": "ISC",
   "dependencies": {
