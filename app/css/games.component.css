@@ -29,7 +29,7 @@
     background-color: #EDEEEF;
     margin-bottom: 5px;
     margin-left: 5px; 
-    padding: 0 0 0 20px;
+    padding: 0px;
 }
 .li-game-recap-header{
     transition-duration: 2s;
@@ -59,7 +59,7 @@
     display: inline-block;
     height: auto;
     border-bottom: initial;
-    min-width: 120px;
+    min-width: 150px;
 }
 .badge-data{
     transform: skew(40deg);
@@ -68,6 +68,10 @@
     transition-timing-function: linear;
     transition: height;
     transition-duration: 2s;
+}
+.badge-champion{
+    padding:0px;
+    display: inline-block;
 }
 .game-charts, .game-map{
     padding: 30px;

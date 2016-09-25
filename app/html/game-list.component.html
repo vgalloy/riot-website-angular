@@ -11,10 +11,11 @@
         </div>
 
         <h2>Match history</h2>
+        <div>Put champion image if found, else put sona one by default</div>
         <ul class="games">
-            <li class="li-game-recap" *ngFor="let game of gameList; let i = index" >
-               <div class="game-recap-header" (click)="onSelect(game,gameList)" >
-                    <div class="badge"><div class="badge-data">Champion icon to add</div></div>
+            <li class="li-game-recap" *ngFor="let game of gameList; let i = index ">
+               <div class="game-recap-header" (click)="onSelect(game,gameList)">
+                    <div class="badge-champion"><img src="app/image/champion/{{game.championId}}.png" onError="this.src='app/image/champion/37.png'"/></div>
                     <div class="badge"><div class="badge-data">{{game.region}}</div></div>
                     <div class="badge"><div class="badge-data">{{game.gameId}}</div></div>
                     <div class="badge"><div class="badge-data">{{game.kill}}/{{game.death}}/{{game.assist}}</div></div>
