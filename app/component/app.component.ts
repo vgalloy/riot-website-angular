@@ -6,5 +6,5 @@ import { Component } from "@angular/core";
     styleUrls: ['app/css/app.component.css']
 })
 export class AppComponent {
-    title = 'Riot Angular WS';
+    title = '3CS minutes V 1.1';
 }
