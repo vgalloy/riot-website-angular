@@ -1,3 +1,8 @@
+.column {
+    display: inline-block;
+    vertical-align: text-top;
+}
+
 .game-list {
     background-color: #212223;
     padding-left: 30px;
@@ -64,12 +69,9 @@
     transition: height;
     transition-duration: 2s;
 }
-.game-charts{
+.game-charts, .game-map{
     padding: 30px;
-    position: absolute;
-    display: inline-block;
     width: 600px;
-    height: auto;
 }
 .game-recap{ /* TODO - modify this thing; it's here for dummy */
     width:800; 
