@@ -6,6 +6,7 @@ export class LastGame {
     gameId:number;
     kill:number;
     region:Region;
+    winner:boolean;
 
     visible:boolean; // TODO C'est juste horrible
 }

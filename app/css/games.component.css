@@ -27,13 +27,11 @@
 .game-recap-header {
     display: block;
     background-color: #EDEEEF;
-    margin-bottom: 5px;
-    margin-left: 5px; 
+    margin-bottom: 10px;
+    margin-left: 10px; 
     padding: 0px;
-}
-.li-game-recap-header{
-    transition-duration: 2s;
-    transform-style: ease;
+    height: 150px;
+    width:900px;
 }
 /*.games li.selected:hover {
     background-color: #BBD8DC !important;
@@ -47,6 +45,35 @@
 
 .games .text {
     position: absolute;
+}
+.badge-winner {
+background: linear-gradient(70deg, #29B40C, #BCD874);
+display: inline-block;
+width:30px;
+height: inherit;
+padding: 0px;
+margin: 0px;
+}
+
+.badge-loser {
+background: linear-gradient(70deg, #6E0C1B, #A24657);
+display: inline-block;
+width:30px;
+height: inherit;
+padding: 0px;
+margin: 0px;
+}
+
+.winner-text {
+    color: #EDEEEF;
+    word-wrap: break-word;
+    letter-spacing: 10px;
+    text-align: center;
+    height: 150px; 
+    padding:10px 5px 0px 5px;
+    width: inherit;
+    margin: -5px 0px -5px 0px;
+    font-size: 17px;
 }
 
 .badge {
@@ -72,6 +99,14 @@
 .badge-champion{
     padding:0px;
     display: inline-block;
+}
+.badge-champion-name{
+    display: block;
+    height: 30px;
+    width: 120px;
+}
+.badge-infos{
+    height: 100px;
 }
 .game-charts, .game-map{
     padding: 30px;

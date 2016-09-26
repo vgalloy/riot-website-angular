@@ -7,19 +7,30 @@
     <div class="column">
         <div class="summoner-info">
         <h2>Overview</h2>
-            Summoner basic info here (Name, rank, main roles)
+            <div>Summoner basic info here (Name, rank, main roles)</div>
+            <div>Put champion image if found, else put sona one by default</div>
+            <div>Colors' Hexa code for Defeat/Victory have been picked on Katarina/Urgot icon</div>
         </div>
 
         <h2>Match history</h2>
-        <div>Put champion image if found, else put sona one by default</div>
         <ul class="games">
             <li class="li-game-recap" *ngFor="let game of gameList; let i = index ">
                <div class="game-recap-header" (click)="onSelect(game,gameList)">
-                    <div class="badge-champion"><img src="app/image/champion/{{game.championId}}.png" onError="this.src='app/image/champion/37.png'"/></div>
-                    <div class="badge"><div class="badge-data">{{game.region}}</div></div>
-                    <div class="badge"><div class="badge-data">{{game.gameId}}</div></div>
-                    <div class="badge"><div class="badge-data">{{game.kill}}/{{game.death}}/{{game.assist}}</div></div>
-                    <div class="badge"><div class="badge-data">champion id : {{game.championId}}</div></div>
+                    <div class="column">
+                        <div class="badge-loser" *ngIf="!game.winner"><div class="winner-text"> DEFEAT </div></div> 
+                        <div class="badge-winner" *ngIf="game.winner"><div class="winner-text"> VICTORY </div></div>
+                    </div>
+                    <div class="column">
+                        <div class="badge-champion"><img src="app/image/champion/{{game.championId}}.png" onError="this.src='app/image/champion/37.png'"/></div>
+                        <div class="badge-champion-name">ChampName</div>
+                    </div>
+                    <div class="column">
+                        <div class="badge-infos">Score/KDA/CS/GOLD/KC%/FB here</div>
+                        <div class="badge"><div class="badge-data">{{game.region}}</div></div>
+                        <div class="badge"><div class="badge-data">{{game.gameId}}</div></div>
+                        <div class="badge"><div class="badge-data">{{game.kill}}/{{game.death}}/{{game.assist}}</div></div>
+                        <div class="badge"><div class="badge-data">champion id : {{game.championId}}</div></div>
+                    </div>
                 </div>
                 <div [hidden]="!game.visible">
                     <p>Temporary info format</p>
