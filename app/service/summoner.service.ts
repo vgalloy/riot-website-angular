@@ -11,7 +11,7 @@ export class SummonerService {
 
     getSummonerByName(region:Region, summonerName:string):Promise<Summoner> {
         console.log("get summoner by name", Region[region], summonerName);
-        return this.http.get("http://149.202.166.194:8081/summoner/" + Region[region] + "/" + summonerName + "/byName")
+        return this.http.get("http://api.3csminute.com/summoner/" + Region[region] + "/" + summonerName + "/byName")
             .toPromise()
             .then(response => response.json() as Summoner)
             .catch(this.handleError)
@@ -19,7 +19,7 @@ export class SummonerService {
 
     getSummonerById(region:Region, summonerId:number):Promise<Summoner> {
         console.log("get summoner by id", Region[region], summonerId);
-        return this.http.get("http://149.202.166.194:8081/summoner/" + Region[region] + "/" + summonerId + "/byId")
+        return this.http.get("http://api.3csminute.com/summoner/" + Region[region] + "/" + summonerId + "/byId")
             .toPromise()
             .then(response => response.json() as Summoner)
             .catch(this.handleError)

@@ -13,7 +13,7 @@ export class GameService {
 
     getGameList(region:Region, summonerId:number, limit:number = 5):Promise<LastGame[]> {
         console.log("Fetching lastGame : ", Region[region], summonerId);
-        return this.http.get("http://149.202.166.194:8081/summoner/" + Region[region] + "/" +  summonerId + "/lastGames?limit=" + limit)
+        return this.http.get("http://api.3csminute.com/summoner/" + Region[region] + "/" +  summonerId + "/lastGames?limit=" + limit)
             .toPromise()
             .then(response => response.json() as LastGame[])
             .catch(this.handleError)
@@ -21,7 +21,7 @@ export class GameService {
 
     getTimeline(region:Region, gameId:number):Promise<PlayerTimeline[]> {
         console.log("Fetching game timeline : ", Region[region], gameId);
-        return this.http.get("http://149.202.166.194:8081/game/" + Region[region] + "/" + gameId + "/timelines")
+        return this.http.get("http://api.3csminute.com/game/" + Region[region] + "/" + gameId + "/timelines")
             .toPromise()
             .then(response => response.json() as PlayerTimeline[])
             .catch(this.handleError)
