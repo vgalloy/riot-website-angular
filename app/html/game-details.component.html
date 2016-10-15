@@ -1,8 +1,15 @@
-<div>Player list : 
-{{timelines}}
-	<ul>
-        <li *ngFor="let timeline of timelines">
-        {{timeline.playerId}}
-        </li>
-	 </ul>
+<div class="game-details">
+    <!--<div class="game-charts">-->
+    <!--Charts, and graphs will end up there.-->
+    <!--</div>-->
+
+    <!--<input id=myId [(ngModel)]="lastGame">-->
+    {{lastGame.gameId}}
+    <div class="game-map">
+        <!--Map and related filters will be there. -->
+        <!--Basically show the map without anything on it, add some indicatiors on it according to which option the user toggles. -->
+        <!--For instance : An option "show position average" shall appear whether a game is selected or not. -->
+        <!--On the contrary : An option "show kills" shall appear only if a game is selected. -->
+        <img src="app/image/map.png">
+    </div>
 </div>

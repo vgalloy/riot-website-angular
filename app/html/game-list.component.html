@@ -1,65 +1,33 @@
-<div class="game-list">
-
-    <div>
-        <input [(ngModel)]="summonerName" placeholder="{{name}}"/>
-        <button (click)="find()">Find</button>
-    </div>
-    <div class="column">
-        <div class="summoner-info">
+<div class="global-game-list">
+    <div class="game-summary-list">
+        <!--<div class="summoner-info">-->
 
         <!--<h2>Overview</h2>-->
             <!--<div>Summoner basic info here (Name, rank, main roles)</div>-->
             <!--<div>Put champion image if found, else put sona one by default</div>-->
             <!--<div>Colors' Hexa code for Defeat/Victory have been picked on Katarina/Urgot icon</div>-->
         <!--</div>-->
-
+        <div class="line">
+            <input [(ngModel)]="summonerName" placeholder="{{name}}"/>
+            <button (click)="find()">Find</button>
+        </div>
         <h2>Match history</h2>
         <ul class="games">
             <li class="li-game-recap" *ngFor="let game of gameList; let i = index ">
                <div class="game-recap-header" (click)="onSelect(game,gameList)">
                     <div class="column">
-                        <div class="badge-loser" *ngIf="!game.winner"><div class="winner-text"> DEFEAT </div></div> 
-                        <div class="badge-winner" *ngIf="game.winner"><div class="winner-text"> VICTORY </div></div>
+                        <div class="badge-loser" *ngIf="!game.winner"><!--<div class="winner-text"> DEFEAT </div>--></div>
+                        <div class="badge-winner" *ngIf="game.winner"><!--<div class="winner-text"> VICTORY </div>--></div>
                     </div>
                     <div class="column">
-                        <div class="badge-champion"><img src="app/image/champion/{{game.championId}}.png" onError="this.src='app/image/champion/37.png'"/></div>
-                        <div class="badge-champion-name">ChampName</div>
+                        <div class="badge-champion"><img class="img-champion" src="app/image/champion/{{game.championId}}.png" onError="this.src='app/image/champion/37.png'"/></div>
                     </div>
                     <div class="column">
-                        <div class="badge-infos">Score/KDA/CS/GOLD/KC%/FB here</div>
-                        <!--<div class="badge"><div class="badge-data">{{game.region}}</div></div>-->
-                        <!--<div class="badge"><div class="badge-data">{{game.gameId}}</div></div>-->
-                        <div class="badge"><div class="badge-data">{{game.kill}}/{{game.death}}/{{game.assist}}</div></div>
-                        <div class="badge"><div class="badge-data">champion id : {{game.championId}}</div></div>
+                        <div class="badge"><div class="badge-data">{{game.kill}}/{{game.death}}/{{game.assist}} {{game.queueType}}</div></div>
                     </div>
                 </div>
-                <!--<div [hidden]="!game.visible">-->
-                    <!--<p>Temporary info format</p>-->
-                    <!--<div>Game details : Win/lose/remake, KC, wards, minion, gold/min, gold 20 min, drakes, duration, etc</div>-->
-                    <!--<div class="game-recap" *ngIf="timelines[i]">-->
-                        <!--<div class="champions-recap" *ngFor="let gameTimeline of timelines[i]; let j = index ">-->
-                            <!--<div class="champion-recap" *ngIf="gameTimeline">-->
-                                <!--<div class="gameTimelineInfo">Player number : {{j}} </div>-->
-                                <!--<div class="gameTimelineInfo">Player ID : {{gameTimeline.playerId}}</div>-->
-                                <!--<div class="gameTimelineInfo">Gold at {{gameTimeline.gold[gameTimeline.gold.length -1].timestamp}} timestamp : {{gameTimeline.gold[gameTimeline.gold.length -1].value}}</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
             </li>
         </ul>
     </div>
-    <div class="column">
-        <div class="game-charts">
-        Charts, and graphs will end up there.
-        </div>
-        <div class="game-map">
-        Map and related filters will be there. 
-        Basically show the map without anything on it, add some indicatiors on it according to which option the user toggles. 
-        For instance : An option "show position average" shall appear whether a game is selected or not. 
-        On the contrary : An option "show kills" shall appear only if a game is selected. 
-            <img src="app/image/map.png">
-        </div>
-    </div>
+    <game-details class="game-details" [lastGame]="selectedGame"></game-details>
 </div>
-

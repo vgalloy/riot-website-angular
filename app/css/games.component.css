@@ -3,10 +3,28 @@
     vertical-align: text-top;
 }
 
-.game-list {
-    background-color: #212223;
-    padding-left: 30px;
-    padding-right: 30px;
+.line {
+    width: 100%;
+}
+
+.global-game-list {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+.game-summary-list {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    margin: 0;
+    /*background-color: #195418;*/
+}
+
+.game-details {
+    width: 100%;
+    height: 100%;
 }
 
 .selected {
@@ -14,25 +32,34 @@
     color: white;
 }
 
+.li-game-recap {
+    margin: 5px;
+    height: 50px;
+}
+
 .games {
-    margin: 0 0 0 0;
-    position: relative;
-    display: inline-block;
-    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    /*position: relative;*/
+    /*display: inline-block;*/
+    /*list-style-type: none;*/
     padding: 0;
     margin: 0;
-    width: auto;
+    width: 100%;
+    height: 100%;
+    overflow:hidden;
+    overflow-y:scroll;
 }
 
 .game-recap-header {
-    display: block;
-    background-color: #EDEEEF;
-    margin-bottom: 10px;
-    margin-left: 10px; 
+    /*display: block;*/
+    background-color: #d6d7d8;
+    /*margin: 5px;*/
     padding: 0px;
-    height: 150px;
-    width:900px;
+    height: 100%;
+    width: 100%;
 }
+
 /*.games li.selected:hover {
     background-color: #BBD8DC !important;
     color: white;
@@ -46,22 +73,23 @@
 .games .text {
     position: absolute;
 }
+
 .badge-winner {
-background: linear-gradient(70deg, #29B40C, #BCD874);
-display: inline-block;
-width:30px;
-height: inherit;
-padding: 0px;
-margin: 0px;
+    background: linear-gradient(70deg, #29B40C, #BCD874);
+    display: inline-block;
+    width: 30px;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
 }
 
 .badge-loser {
-background: linear-gradient(70deg, #6E0C1B, #A24657);
-display: inline-block;
-width:30px;
-height: inherit;
-padding: 0px;
-margin: 0px;
+    background: linear-gradient(70deg, #6E0C1B, #A24657);
+    display: inline-block;
+    width: 30px;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
 }
 
 .winner-text {
@@ -69,18 +97,18 @@ margin: 0px;
     word-wrap: break-word;
     letter-spacing: 10px;
     text-align: center;
-    height: 150px; 
-    padding:10px 5px 0px 5px;
+    height: 150px;
+    padding: 10px;
     width: inherit;
     margin: -5px 0px -5px 0px;
-    font-size: 17px;
+    font-size: 7px;
 }
 
 .badge {
     color: #EDEEEF;
     position: relative;
-    padding: 15px;
-    transform: skew(-40deg);
+    /*padding: 15px;*/
+    /*transform: skew(-40deg);*/
     background-color: #888;
     text-decoration: none;
     display: inline-block;
@@ -88,35 +116,46 @@ margin: 0px;
     border-bottom: initial;
     min-width: 150px;
 }
-.badge-data{
-    transform: skew(40deg);
+
+.badge-data {
+    /*transform: skew(40deg);*/
 }
-.badge-details{
+
+.badge-details {
     transition-timing-function: linear;
     transition: height;
     transition-duration: 2s;
 }
-.badge-champion{
-    padding:0px;
+
+.badge-champion {
+    padding: 0px;
     display: inline-block;
 }
-.badge-champion-name{
+
+.img-champion {
+    height: 100%;
+}
+
+.badge-champion-name {
     display: block;
     height: 30px;
     width: 120px;
 }
-.badge-infos{
+
+.badge-infos {
     height: 100px;
 }
-.game-charts, .game-map{
-    padding: 30px;
-    width: 600px;
-}
-.game-recap{ /* TODO - modify this thing; it's here for dummy */
-    width:800; 
+
+.game-map {
+    /*padding: 30px;*/
+    width: 70px;
 }
 
-.gameTimelineInfo{
+.game-recap { /* TODO - modify this thing; it's here for dummy */
+    /*width: 800;*/
+}
+
+.gameTimelineInfo {
     display: inline-block;
     margin: 5px;
 }

@@ -4,21 +4,23 @@ import { GameService } from "../service/game.service";
 import { LastGame } from ".././model/last-game";
 import { SummonerService } from "../service/summoner.service";
 import { Region } from "../model/region";
-import { Summoner } from "../model/summoner";
-import { PlayerTimeline } from "../model/player-timeline";
 import { GameModel } from "../model/game.model";
-    
+
 @Component({
     selector: 'game-list',
     templateUrl: 'app/html/game-list.component.html',
-    styleUrls: ['app/css/game-detail.component.css','app/css/games.component.css'],
+    styleUrls: ['app/css/game-detail.component.css', 'app/css/games.component.css']
 })
 export class GameListComponent implements OnInit {
     @Input() summonerName:string;
     gameList:LastGame[] = [];
     name:string = "Summoner Name";
     summonerId:number;
+    region:Region;
     games:GameModel[] = [];
+
+    selectedGame:LastGame;
+
     constructor(private route:ActivatedRoute,
                 private gameService:GameService,
                 private router:Router,
@@ -30,43 +32,49 @@ export class GameListComponent implements OnInit {
         this.route.params.forEach((params:Params) => {
             let summonerId = params['summonerId'];
             let regionString:string = params['region'];
-            let region = Region[regionString];
 
+            this.region = Region[regionString];
             this.summonerId = summonerId;
 
-            console.log("region", region);
-            console.log("summonerId", summonerId);
-
-            this.summonerService.getSummonerById(region, summonerId)
+            this.gameList = [];
+            this.summonerService.getSummonerById(this.region, this.summonerId)
                 .then(summoner => this.name = summoner.name);
-
-            this.gameService.getGameList(region, summonerId, new Date(new Date().getTime() - 30 * 24 * 3600 * 1000), new Date())
-                .then(gameList => { 
-                    this.gameList = gameList;
-                    this.gameList.forEach((lastGameModel) => {
-                        lastGameModel.visible = false;
-                        this.gameService.getGame(lastGameModel.gameId)
-                            .then(game => {this.games.push(game);});
-                    });
-                });   
+            /** Load les game jour par jour pendant sur 30 jour**/
+            this.findGame(new Date(new Date().getTime() - 30 * 24 * 3600 * 1000), new Date())
         });
     }
 
     find():void {
         console.log(this.summonerName);
+        if (!this.summonerName) {
+            return
+        }
         let region = Region.EUW;
-
         this.summonerService.getSummonerByName(region, this.summonerName).then(summoner => {
-            console.log("J'ai trouvé", summoner);
             this.router.navigate(['/summoner', region, summoner.id, 'gameList']);
         });
     }
 
-    onSelect(game:LastGame,gameList:LastGame[]):void {
-        gameList.forEach((gameHidden) =>{
-        if(gameHidden !== gameList[gameList.indexOf(game)])
-            gameHidden.visible = false;
-        });
-        game.visible = !game.visible;
+    onSelect(game:LastGame):void {
+        this.selectedGame = game;
+    }
+
+    /**
+     * Load the game played during [from, to] in the gameList.
+     * The loading is day by day.
+     * @param from the first date
+     * @param to the last date
+     */
+    findGame(from:Date, to:Date):void {
+        if (from.getTime() > to.getTime()) {
+            return;
+        } else {
+            let date:Date = new Date(from.getTime() + 24 * 3600 * 1000);
+            this.gameService.getGameList(this.region, this.summonerId, from, date)
+                .then(gameList => {
+                    this.gameList = this.gameList.concat(gameList);
+                    this.findGame(date, to);
+                })
+        }
     }
 }

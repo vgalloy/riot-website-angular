@@ -5,8 +5,6 @@ export class LastGame {
     death:number;
     gameId:string;
     kill:number;
-    region:Region;
     winner:boolean;
-
-    visible:boolean; // TODO C'est juste horrible
+    queueType:string;
 }
