@@ -34,10 +34,13 @@ export class GameDetailsComponent implements OnInit {
             this.summonerService.getSummonerById(region, summonerId)
                 .then(summoner => this.name = summoner.name);
 
-            //to only do when gameId is defined, when a game is visible
-            if(gameId)    
-            this.gameService.getTimeline(region, gameId)
-                .then(timelines => this.timelines = timelines);
+            // to only do when gameId is defined, when a game is visible
+            if (gameId) {
+                this.gameService.getGame(gameId)
+                    .then(game => this.timelines = game.playerTimelines);
+            }
+
+
         });
     }
 

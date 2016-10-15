@@ -6,6 +6,7 @@ import { SummonerService } from "../service/summoner.service";
 import { Region } from "../model/region";
 import { Summoner } from "../model/summoner";
 import { PlayerTimeline } from "../model/player-timeline";
+import { GameModel } from "../model/game.model";
     
 @Component({
     selector: 'game-list',
@@ -14,10 +15,10 @@ import { PlayerTimeline } from "../model/player-timeline";
 })
 export class GameListComponent implements OnInit {
     @Input() summonerName:string;
-    gameList:LastGame[];
+    gameList:LastGame[] = [];
     name:string = "Summoner Name";
     summonerId:number;
-    timelines:Array<PlayerTimeline[]> = [];
+    games:GameModel[] = [];
     constructor(private route:ActivatedRoute,
                 private gameService:GameService,
                 private router:Router,
@@ -33,22 +34,21 @@ export class GameListComponent implements OnInit {
 
             this.summonerId = summonerId;
 
+            console.log("region", region);
+            console.log("summonerId", summonerId);
+
             this.summonerService.getSummonerById(region, summonerId)
                 .then(summoner => this.name = summoner.name);
 
-            this.gameService.getGameList(region, summonerId)
+            this.gameService.getGameList(region, summonerId, new Date(new Date().getTime() - 30 * 24 * 3600 * 1000), new Date())
                 .then(gameList => { 
                     this.gameList = gameList;
-                    this.gameList.forEach((game) => { 
-                        game.visible = false;
-                        
-                        this.gameService.getTimeline(region, game.gameId)
-                            .then(timelines => {
-                                                this.timelines.push(timelines);
-                                                });
+                    this.gameList.forEach((lastGameModel) => {
+                        lastGameModel.visible = false;
+                        this.gameService.getGame(lastGameModel.gameId)
+                            .then(game => {this.games.push(game);});
                     });
                 });   
-           
         });
     }
 
@@ -57,6 +57,7 @@ export class GameListComponent implements OnInit {
         let region = Region.EUW;
 
         this.summonerService.getSummonerByName(region, this.summonerName).then(summoner => {
+            console.log("J'ai trouvé", summoner);
             this.router.navigate(['/summoner', region, summoner.id, 'gameList']);
         });
     }

@@ -3,7 +3,7 @@ import { Http } from "@angular/http";
 import "rxjs/add/operator/toPromise";
 import { LastGame } from "../model/last-game";
 import { Region } from "../model/region";
-import { PlayerTimeline } from "../model/player-timeline";
+import { GameModel } from "../model/game.model";
 
 @Injectable()
 export class GameService {
@@ -11,19 +11,19 @@ export class GameService {
     constructor(private http:Http) {
     }
 
-    getGameList(region:Region, summonerId:number, limit:number = 5):Promise<LastGame[]> {
-        console.log("Fetching lastGame : ", Region[region], summonerId);
-        return this.http.get("http://api.3csminute.com/summoner/" + Region[region] + "/" +  summonerId + "/lastGames?limit=" + limit)
+    getGameList(region:Region, summonerId:number, from:Date, to:Date):Promise<LastGame[]> {
+        console.log("Fetching lastGame :", Region[region], summonerId);
+        return this.http.get("http://api.3csminute.com/summoner/" + Region[region] + "/" +  summonerId + "/lastGames?from=" + from.getTime() + "&to=" + to.getTime())
             .toPromise()
             .then(response => response.json() as LastGame[])
             .catch(this.handleError)
     }
 
-    getTimeline(region:Region, gameId:number):Promise<PlayerTimeline[]> {
-        console.log("Fetching game timeline : ", Region[region], gameId);
-        return this.http.get("http://api.3csminute.com/game/" + Region[region] + "/" + gameId + "/timelines")
+    getGame(gameId:string):Promise<GameModel> {
+        console.log("Fetching game :", gameId);
+        return this.http.get("http://api.3csminute.com/game/" + gameId)
             .toPromise()
-            .then(response => response.json() as PlayerTimeline[])
+            .then(response => response.json() as GameModel)
             .catch(this.handleError)
     }
 

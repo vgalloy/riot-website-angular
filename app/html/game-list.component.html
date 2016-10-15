@@ -6,11 +6,12 @@
     </div>
     <div class="column">
         <div class="summoner-info">
-        <h2>Overview</h2>
-            <div>Summoner basic info here (Name, rank, main roles)</div>
-            <div>Put champion image if found, else put sona one by default</div>
-            <div>Colors' Hexa code for Defeat/Victory have been picked on Katarina/Urgot icon</div>
-        </div>
+
+        <!--<h2>Overview</h2>-->
+            <!--<div>Summoner basic info here (Name, rank, main roles)</div>-->
+            <!--<div>Put champion image if found, else put sona one by default</div>-->
+            <!--<div>Colors' Hexa code for Defeat/Victory have been picked on Katarina/Urgot icon</div>-->
+        <!--</div>-->
 
         <h2>Match history</h2>
         <ul class="games">
@@ -26,25 +27,25 @@
                     </div>
                     <div class="column">
                         <div class="badge-infos">Score/KDA/CS/GOLD/KC%/FB here</div>
-                        <div class="badge"><div class="badge-data">{{game.region}}</div></div>
-                        <div class="badge"><div class="badge-data">{{game.gameId}}</div></div>
+                        <!--<div class="badge"><div class="badge-data">{{game.region}}</div></div>-->
+                        <!--<div class="badge"><div class="badge-data">{{game.gameId}}</div></div>-->
                         <div class="badge"><div class="badge-data">{{game.kill}}/{{game.death}}/{{game.assist}}</div></div>
                         <div class="badge"><div class="badge-data">champion id : {{game.championId}}</div></div>
                     </div>
                 </div>
-                <div [hidden]="!game.visible">
-                    <p>Temporary info format</p>
-                    <div>Game details : Win/lose/remake, KC, wards, minion, gold/min, gold 20 min, drakes, duration, etc</div>
-                    <div class="game-recap" *ngIf="timelines[i]">
-                        <div class="champions-recap" *ngFor="let gameTimeline of timelines[i]; let j = index ">
-                            <div class="champion-recap" *ngIf="gameTimeline">
-                                <div class="gameTimelineInfo">Player number : {{j}} </div>
-                                <div class="gameTimelineInfo">Player ID : {{gameTimeline.playerId}}</div>
-                                <div class="gameTimelineInfo">Gold at {{gameTimeline.gold[gameTimeline.gold.length -1].timestamp}} timestamp : {{gameTimeline.gold[gameTimeline.gold.length -1].value}}</div>
-                            </div>
-                        </div>
-                    </div>  
-                </div>
+                <!--<div [hidden]="!game.visible">-->
+                    <!--<p>Temporary info format</p>-->
+                    <!--<div>Game details : Win/lose/remake, KC, wards, minion, gold/min, gold 20 min, drakes, duration, etc</div>-->
+                    <!--<div class="game-recap" *ngIf="timelines[i]">-->
+                        <!--<div class="champions-recap" *ngFor="let gameTimeline of timelines[i]; let j = index ">-->
+                            <!--<div class="champion-recap" *ngIf="gameTimeline">-->
+                                <!--<div class="gameTimelineInfo">Player number : {{j}} </div>-->
+                                <!--<div class="gameTimelineInfo">Player ID : {{gameTimeline.playerId}}</div>-->
+                                <!--<div class="gameTimelineInfo">Gold at {{gameTimeline.gold[gameTimeline.gold.length -1].timestamp}} timestamp : {{gameTimeline.gold[gameTimeline.gold.length -1].value}}</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
             </li>
         </ul>
     </div>
