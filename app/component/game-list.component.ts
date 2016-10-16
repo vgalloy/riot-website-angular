@@ -39,7 +39,7 @@ export class GameListComponent implements OnInit {
             this.gameList = [];
             this.summonerService.getSummonerById(this.region, this.summonerId)
                 .then(summoner => this.name = summoner.name);
-            /** Load les game jour par jour pendant sur 30 jour**/
+            /** Load les game jour par jour pendant sur 30 jour **/
             this.findGame(new Date(new Date().getTime() - 30 * 24 * 3600 * 1000), new Date())
         });
     }
@@ -69,11 +69,11 @@ export class GameListComponent implements OnInit {
         if (from.getTime() > to.getTime()) {
             return;
         } else {
-            let date:Date = new Date(from.getTime() + 24 * 3600 * 1000);
-            this.gameService.getGameList(this.region, this.summonerId, from, date)
+            let date:Date = new Date(to.getTime() - 24 * 3600 * 1000);
+            this.gameService.getGameList(this.region, this.summonerId, to, to)
                 .then(gameList => {
-                    this.gameList = this.gameList.concat(gameList);
-                    this.findGame(date, to);
+                    this.gameList = this.gameList.concat(gameList.reverse());
+                    this.findGame(from, date);
                 })
         }
     }
