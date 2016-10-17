@@ -1,6 +1,7 @@
 .column {
     display: inline-block;
     vertical-align: text-top;
+    font-size: 16px;
 }
 
 .line {
@@ -52,12 +53,13 @@
 }
 
 .game-recap-header {
-    /*display: block;*/
+    display: flex;
     background-color: #d6d7d8;
     /*margin: 5px;*/
+    font-size: 0px;
     padding: 0px;
     height: 100%;
-    width: 100%;
+    /*width: 100%;*/
 }
 
 /*.games li.selected:hover {
