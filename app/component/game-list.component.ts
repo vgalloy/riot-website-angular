@@ -1,15 +1,14 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { ActivatedRoute, Params, Router } from "@angular/router";
-import { GameService } from "../service/game.service";
-import { LastGame } from ".././model/last-game";
-import { SummonerService } from "../service/summoner.service";
-import { Region } from "../model/region";
-import { GameModel } from "../model/game.model";
+import {Component, OnInit, Input} from "@angular/core";
+import {ActivatedRoute, Params, Router} from "@angular/router";
+import {GameService} from "../service/game.service";
+import {LastGame} from ".././model/last-game";
+import {SummonerService} from "../service/summoner.service";
+import {Region} from "../model/region";
 
 @Component({
     selector: 'game-list',
     templateUrl: 'app/html/game-list.component.html',
-    styleUrls: ['app/css/game-detail.component.css', 'app/css/games.component.css']
+    styleUrls: ['app/css/game-detail.component.css', 'app/css/games-list.component.css']
 })
 export class GameListComponent implements OnInit {
     @Input() summonerName:string;
@@ -17,9 +16,6 @@ export class GameListComponent implements OnInit {
     name:string = "Summoner Name";
     summonerId:number;
     region:Region;
-    games:GameModel[] = [];
-
-    selectedGame:LastGame;
 
     constructor(private route:ActivatedRoute,
                 private gameService:GameService,
@@ -39,7 +35,6 @@ export class GameListComponent implements OnInit {
             this.gameList = [];
             this.summonerService.getSummonerById(this.region, this.summonerId)
                 .then(summoner => this.name = summoner.name);
-            /** Load les game jour par jour pendant sur 30 jour **/
             this.findGame(new Date(new Date().getTime() - 30 * 24 * 3600 * 1000), new Date())
         });
     }
@@ -56,7 +51,7 @@ export class GameListComponent implements OnInit {
     }
 
     onSelect(game:LastGame):void {
-        this.selectedGame = game;
+        game.selected = !game.selected;
     }
 
     /**

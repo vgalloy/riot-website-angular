@@ -1,0 +1,30 @@
+.badge {
+    color: #EDEEEF;
+}
+
+.badge-winner {
+    background: linear-gradient(70deg, #29B40C, #BCD874);
+    width: 30px;
+    height: 100%;
+}
+
+.badge-loser {
+    background: linear-gradient(70deg, #6E0C1B, #A24657);
+    width: 30px;
+    height: 100%;
+}
+
+.badge-data {
+    font-size: 15px;
+    color: black;
+}
+
+.badge-details {
+    transition-timing-function: linear;
+    transition: height;
+    transition-duration: 2s;
+}
+
+.img-champion {
+    height: 100%;
+}

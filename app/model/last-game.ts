@@ -7,4 +7,7 @@ export class LastGame {
     kill:number;
     winner:boolean;
     queueType:string;
+
+    /* TODO virer ça ! ! !*/
+    selected:boolean = false;
 }

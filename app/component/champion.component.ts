@@ -1,12 +1,11 @@
-import { Component, Input } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { GameService } from "../service/game.service";
-import { ChampionService } from "../service/champion.service";
+import {Component, Input} from "@angular/core";
+import {ActivatedRoute, Router} from "@angular/router";
+import {GameService} from "../service/game.service";
+import {ChampionService} from "../service/champion.service";
 
 @Component({
     selector: 'game-list',
     templateUrl: 'app/html/champion.component.html',
-    // styleUrls: ['app/css/game-detail.component.css']
 })
 export class ChampionComponent {
     @Input() championId:number;

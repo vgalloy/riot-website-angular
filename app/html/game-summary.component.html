@@ -1,0 +1,12 @@
+<div>
+    <div class="badge-loser" *ngIf="!lastGame.winner"></div>
+    <div class="badge-winner" *ngIf="lastGame.winner"></div>
+</div>
+<div>
+    <img class="img-champion" src="app/image/champion/{{lastGame.championId}}.png"/>
+</div>
+<div>
+    <div class="badge">
+        <div class="badge-data">{{lastGame.kill}}/{{lastGame.death}}/{{lastGame.assist}} {{lastGame.queueType}} {{lastGame.selected}}</div>
+    </div>
+</div>

@@ -11,6 +11,7 @@ import { ChampionComponent } from "./component/champion.component";
 import { SummonerService } from "./service/summoner.service";
 import { GameService } from "./service/game.service";
 import { ChampionService } from "./service/champion.service";
+import {GameSummaryComponent} from "./component/game-summary.component";
 
 @NgModule({
     imports: [
@@ -24,6 +25,7 @@ import { ChampionService } from "./service/champion.service";
         SummonerComponent,
         GameListComponent,
         GameDetailsComponent,
+        GameSummaryComponent,
         ChampionComponent
     ],
     providers: [

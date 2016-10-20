@@ -40,3 +40,13 @@ button:disabled {
     /*background: #d31a17;*/
     /*vertical-align: text-top;*/
 }
+
+.position {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    background: red;
+    border-radius: 50%;
+    height: 5px;
+    width: 5px;
+}
