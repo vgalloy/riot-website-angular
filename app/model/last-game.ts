@@ -1,4 +1,3 @@
-import { Region } from "./region";
 export class LastGame {
     assist:number;
     championId:number;
@@ -7,6 +6,8 @@ export class LastGame {
     kill:number;
     winner:boolean;
     queueType:string;
+    spell1Id:number;
+    spell2Id:number;
 
     /* TODO virer ça ! ! !*/
     selected:boolean = false;

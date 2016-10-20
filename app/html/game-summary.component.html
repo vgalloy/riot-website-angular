@@ -1,12 +1,18 @@
-<div>
-    <div class="badge-loser" *ngIf="!lastGame.winner"></div>
-    <div class="badge-winner" *ngIf="lastGame.winner"></div>
-</div>
-<div>
-    <img class="img-champion" src="app/image/champion/{{lastGame.championId}}.png"/>
-</div>
-<div>
-    <div class="badge">
-        <div class="badge-data">{{lastGame.kill}}/{{lastGame.death}}/{{lastGame.assist}} {{lastGame.queueType}} {{lastGame.selected}}</div>
+<div class="game-recap-header">
+    <div>
+        <div class="badge-loser" *ngIf="!lastGame.winner"></div>
+        <div class="badge-winner" *ngIf="lastGame.winner"></div>
+    </div>
+    <div>
+        <img class="img-champion" src="app/image/champion/{{lastGame.championId}}.png"/>
+    </div>
+    <div class="spell-column">
+        <img class="img-spell" src="app/image/spell/{{lastGame.spell1Id}}.png">
+        <img class="img-spell" src="app/image/spell/{{lastGame.spell2Id}}.png">
+    </div>
+    <div>
+        <div class="badge">
+            <div class="badge-data">{{lastGame.kill}}/{{lastGame.death}}/{{lastGame.assist}} {{lastGame.queueType}} {{lastGame.selected}}</div>
+        </div>
     </div>
 </div>
