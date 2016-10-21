@@ -6,7 +6,7 @@
         </div>
         <h2>Match history</h2>
         <ul class="games">
-            <li *ngFor="let game of gameList">
+            <li class="li-game-summary" *ngFor="let game of gameList">
                 <game-summary [lastGame]="game" (click)="onSelect(game,gameList)"></game-summary>
             </li>
         </ul>

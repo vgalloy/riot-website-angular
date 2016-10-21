@@ -1,6 +1,6 @@
-import { PlayerTimeline } from "./player-timeline";
+import {GameInformationModel} from "./game-information.model";
 export class GameModel {
     gameId:string;
     lastUpdate:number;
-    playerTimelines:PlayerTimeline[];
+    gameInformation:GameInformationModel;
 }

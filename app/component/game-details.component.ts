@@ -15,7 +15,7 @@ import {Position} from "../model/position";
 export class GameDetailsComponent {
 
     _lastGames:LastGame[] = [];
-    private games:GameModel[] = [];
+    private _positions:Position[] = [];
 
     constructor(private route:ActivatedRoute,
                 private cachedGameService:CachedGameService,
@@ -34,27 +34,26 @@ export class GameDetailsComponent {
         });
     }
 
-    /** Ne marche pas du tout */
-    get position():Position[] {
-        let result:Position[] = this.lastGames
-            .map(this.mapLastGameIntoGameModel)
-            .filter(function (gameModel:GameModel):boolean {
-                return gameModel != null;
-            })
-            .map(function (gameModel:GameModel):Position[] {
-                // TODO prendre le bon joueur
-                return gameModel.playerTimelines[0].position.map(function (positionTimedEvent:PositionTimedEvent):Position {
-                    return positionTimedEvent.value;
-                })
-            })
-            .reduce(function (previousValue:Position[], currentValue:Position[]) {
-                return previousValue.concat(currentValue);
-            });
-        console.log("result", result);
-        return result;
+    get positions():Position[] {
+        this.updatePosition();
+        console.log("positions", this._positions);
+        return this._positions;
     }
 
-    private mapLastGameIntoGameModel(lastGame:LastGame):GameModel {
+    /** Ne marche pas du tout */
+    updatePosition(): void{
+        let result = this.lastGames
+            .map((lastGames:LastGame) => this.mapLastGameIntoGameModel(lastGames))
+            .filter((gameModel:GameModel) => {return gameModel != null})
+            .map((gameModel:GameModel) => {
+                // TODO prendre le bon joueur
+                return gameModel.gameInformation.playerTimelines[0].position.map((positionTimedEvent:PositionTimedEvent) => positionTimedEvent.value)
+            })
+            .reduce((previousValue:Position[], currentValue:Position[]) => previousValue.concat(currentValue), []);
+        this._positions = result;
+    }
+
+    mapLastGameIntoGameModel(lastGame:LastGame):GameModel {
         return this.cachedGameService.getGame(lastGame.gameId);
     }
 }
