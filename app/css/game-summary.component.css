@@ -1,12 +1,10 @@
 .game-recap-header {
     display: flex;
     flex-direction: row;
-
     background-color: #d6d7d8;
 }
 
 .game-recap-header:hover {
-    color: #607D8B;
     background-color: #FFFFFF;
 }
 
@@ -43,7 +41,6 @@
 }
 
 .img-spell {
-    /*flex: 1;*/
     height:50%;
 }
 

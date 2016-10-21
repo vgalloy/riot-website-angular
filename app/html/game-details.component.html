@@ -1,9 +1,7 @@
 <div class="game-details">
     <div class="game-map">
-        {{lastGames}}
         <img src="app/image/map.png">
-        <div class="position">
-            {{positions}}
+        <div class="position" *ngFor="let position of positions" [style.left]="getLeft(position)" [style.top]="getTop(position)">
         </div>
     </div>
 </div>

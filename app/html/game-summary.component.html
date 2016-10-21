@@ -1,4 +1,4 @@
-<div class="game-recap-header">
+<div class="game-recap-header" [style.border]="getBorder()" (click)="clicked()">
     <div>
         <div class="badge-loser" *ngIf="!lastGame.winner"></div>
         <div class="badge-winner" *ngIf="lastGame.winner"></div>
@@ -12,7 +12,7 @@
     </div>
     <div>
         <div class="badge">
-            <div class="badge-data">{{lastGame.kill}}/{{lastGame.death}}/{{lastGame.assist}} {{lastGame.queueType}} {{lastGame.selected}}</div>
+            <div class="badge-data">{{lastGame.kill}}/{{lastGame.death}}/{{lastGame.assist}} {{lastGame.queueType}}</div>
         </div>
     </div>
 </div>
