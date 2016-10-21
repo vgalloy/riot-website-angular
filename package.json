@@ -5,7 +5,7 @@
     "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "lite": "lite-server",
     "postinstall": "typings install",
-    "tsc": "tsc",
+    "tsc": "tsc --target es6",
     "tsc:w": "tsc -w",
     "typings": "typings",
     "clean": "rm -rf dist",
