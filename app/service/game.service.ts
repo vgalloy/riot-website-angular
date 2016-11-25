@@ -13,7 +13,7 @@ export class GameService {
 
     getGameList(region:Region, summonerId:number, from:Date, to:Date):Promise<LastGame[]> {
         console.log("Fetching lastGame :", Region[region], summonerId, from, to);
-        return this.http.get("http://api.3csminute.com/summoner/" + Region[region] + "/" +  summonerId + "/lastGames?from=" + from.getTime() + "&to=" + to.getTime())
+        return this.http.get("http://api.3csminute.com/summoner/" + Region[region] + "/" +  summonerId + "/lastGames?fromMillis=" + from.getTime() + "&toMillis=" + to.getTime())
             .toPromise()
             .then(response => response.json() as LastGame[])
             .catch(this.handleError)
