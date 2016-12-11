@@ -40,19 +40,15 @@ export class GameDetailsComponent {
         return this._positions;
     }
 
-    /** Ne marche pas du tout */
     updatePosition():void {
-        let result = this.lastGames
+        this._positions = this.lastGames
             .map((lastGame:LastGame) => this.cachedGameService.getGame(lastGame.gameId))
             .filter((gameModel:GameModel) => gameModel != null)
             .map((gameModel:GameModel) => {
                 let timeline:PlayerTimeline = gameModel.gameInformation.playerTimelines.find((timeLine:PlayerTimeline) => timeLine.playerId == this.playerId);
-                console.log("timeline", timeline);
-
                 return timeline.position.map((positionTimedEvent:PositionTimedEvent) => positionTimedEvent.value)
             })
             .reduce((previousValue:Position[], currentValue:Position[]) => previousValue.concat(currentValue), []);
-        this._positions = result;
     }
 
     getLeft(position:Position):string {
