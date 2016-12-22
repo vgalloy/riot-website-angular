@@ -1,0 +1,7 @@
+<div class="game-details">
+  <div class="game-map">
+    <img src="app/img/map.png">
+    <div class="position" *ngFor="let position of positions" [style.left]="getLeft(position)" [style.top]="getTop(position)">
+    </div>
+  </div>
+</div>
