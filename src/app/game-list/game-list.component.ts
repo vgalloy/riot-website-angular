@@ -13,6 +13,7 @@ import {SummonerService} from "../service/summoner.service";
 export class GameListComponent implements OnInit {
   @Input() summonerName:string;
   gameList:LastGame[] = [];
+  selectedGamesId: string[] = [];
   name:string = "Summoner Name";
   summonerId:number;
   region:Region;
@@ -40,7 +41,6 @@ export class GameListComponent implements OnInit {
   }
 
   find():void {
-    console.log(this.summonerName);
     if (!this.summonerName) {
       return
     }
@@ -51,7 +51,13 @@ export class GameListComponent implements OnInit {
   }
 
   onSelect(game:LastGame):void {
-    game.selected = !game.selected;
+    let index:number = this.selectedGamesId.indexOf(game.gameId);
+    if( -1 == index) {
+      this.selectedGamesId.push(game.gameId);
+    } else {
+      this.selectedGamesId.splice(index, 1);
+    }
+    console.log("At the end", this.selectedGamesId);
   }
 
   /**
@@ -61,7 +67,7 @@ export class GameListComponent implements OnInit {
    * @param to the last date
    */
   findGame(from:Date, to:Date):void {
-    if (from.getTime() > to.getTime()) {
+    if (from.getTime() >= to.getTime()) {
       return;
     } else {
       let date:Date = new Date(to.getTime() - 24 * 3600 * 1000);

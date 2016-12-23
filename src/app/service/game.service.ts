@@ -21,7 +21,7 @@ export class GameService {
   getGame(gameId:string):Observable<GameModel> {
     console.log("Fetching game :", gameId);
     return this.http.get("http://api.3csminute.com/game/" + gameId)
-      .map(res => res.json().data as GameModel)
+      .map(res => res.json() as GameModel)
       .catch(this.handleError)
   }
 

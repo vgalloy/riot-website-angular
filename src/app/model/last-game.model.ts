@@ -8,7 +8,4 @@ export class LastGame {
     queueType:string;
     spell1Id:number;
     spell2Id:number;
-
-    /* TODO virer ça ! ! !*/
-    selected:boolean = false;
 }

@@ -1,12 +1,9 @@
-import {Component, Input} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {LastGame} from "../model/last-game.model";
-import {SummonerService} from "../service/summoner.service";
+import {Component, Input} from "@angular/core";
 import {CachedGameService} from "../service/cached-game.service";
 import {GameModel} from "../model/game.model";
 import {PlayerTimeline} from "../model/player-timeline.model";
 import {PositionTimedEvent} from "../model/position-timed-event.model";
-import {Position} from "../model/position.model"
+import {Position} from "../model/position.model";
 
 @Component({
   selector: 'app-game-detail',
@@ -14,43 +11,25 @@ import {Position} from "../model/position.model"
   styleUrls: ['./game-detail.component.css']
 })
 export class GameDetailComponent {
-
-  _lastGames:LastGame[] = [];
-  private _positions:Position[] = [];
+  @Input()
+  selectedGamesId:string[] = [];
   @Input()
   playerId:number;
+  positions:Position[] = [];
 
-  constructor(private route:ActivatedRoute,
-              private cachedGameService:CachedGameService,
-              private router:Router,
-              private summonerService:SummonerService) {
-  }
-
-  @Input()
-  set lastGames(lastGames:LastGame[]) {
-    this._lastGames = lastGames || [];
-  }
-
-  get lastGames():LastGame[] {
-    return this._lastGames.filter((lastGame:LastGame) => lastGame.selected);
-  }
-
-  get positions():Position[] {
-    // this.updatePosition();
-    return this._positions;
+  constructor(private cachedGameService:CachedGameService) {
   }
 
   updatePosition():void {
-    console.log("update position");
-    this._positions = this.lastGames
-      .map((lastGame:LastGame) => this.cachedGameService.getGame(lastGame.gameId))
-      .filter((gameModel:GameModel) => gameModel != null)
-      .map((gameModel:GameModel) => {
-        console.log("gameModel", gameModel);
-        let timeline:PlayerTimeline = gameModel.gameInformation.playerTimelines.find((timeLine:PlayerTimeline) => timeLine.playerId == this.playerId);
-        return timeline.position.map((positionTimedEvent:PositionTimedEvent) => positionTimedEvent.value)
-      })
-      .reduce((previousValue:Position[], currentValue:Position[]) => previousValue.concat(currentValue), []);
+    console.log("update position", this.selectedGamesId);
+    this.positions = this.selectedGamesId
+        .map((gameId:string) => this.cachedGameService.getGame(gameId))
+        .filter((gameModel:GameModel) => gameModel != null)
+        .map((gameModel:GameModel) => {
+          let timeline:PlayerTimeline = gameModel.gameInformation.playerTimelines.find((timeLine:PlayerTimeline) => timeLine.playerId == this.playerId);
+          return timeline.position.map((positionTimedEvent:PositionTimedEvent) => positionTimedEvent.value)
+        })
+        .reduce((previousValue:Position[], currentValue:Position[]) => previousValue.concat(currentValue), []);
   }
 
   getLeft(position:Position):string {

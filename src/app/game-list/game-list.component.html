@@ -7,9 +7,9 @@
     <h2>Match history</h2>
     <ul class="games">
       <li class="li-game-summary" *ngFor="let game of gameList">
-        <app-game-summary [lastGame]="game" (click)="onSelect(game,gameList)"></app-game-summary>
+        <app-game-summary [lastGame]="game" (click)="onSelect(game); map.updatePosition()"></app-game-summary>
       </li>
     </ul>
   </div>
-  <app-game-detail class="game-details" [lastGames]="gameList" [playerId]="summonerId"></app-game-detail>
+  <app-game-detail #map class="game-details" [selectedGamesId]="selectedGamesId" [playerId]="summonerId"></app-game-detail>
 </div>
