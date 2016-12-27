@@ -33,10 +33,10 @@ export class GameDetailComponent {
   }
 
   getLeft(position:Position):string {
-    return (position.x * 100 / 14820) + "%";
+    return ((position.x + 120) * 100 / 14990) + "%";
   }
 
   getTop(position:Position):string {
-    return (100 - (position.y * 100 / 14881)) + "%";
+    return (100 - ((position.y + 120) * 100 / 15100)) + "%";
   }
 }
