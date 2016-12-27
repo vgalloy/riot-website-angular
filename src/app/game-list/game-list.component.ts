@@ -71,7 +71,7 @@ export class GameListComponent implements OnInit {
       return;
     } else {
       let date:Date = new Date(to.getTime() - 24 * 3600 * 1000);
-      this.gameService.getGameList(this.region, this.summonerId, to, to)
+      this.gameService.getGameList(this.region, this.summonerId, date, to)
         .subscribe(gameList => {
           this.gameList = this.gameList.concat(gameList.reverse());
           this.findGame(from, date);
