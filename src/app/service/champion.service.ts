@@ -12,10 +12,16 @@ export class ChampionService {
   getWinRate(championId:number):Observable<WinRate[]> {
     return this.http.get("http://api.3csminute.com/champion/" + championId + "/winRateByGamePlayed")
       .map(response => response.json() as WinRate[])
-      .catch(this.handleError)
+      .catch(ChampionService.handleError)
   }
 
-  private handleError(error:Response | any) {
+  getAllChampionWinRateByDay(date:Date):Observable<Map<number, WinRate>> {
+    return this.http.get("http://api.3csminute.com/champion/winRateByDate/" + Math.floor(date.getTime() / 1000 / 3600 / 24))
+        .map(response => response.json() as WinRate[])
+        .catch(ChampionService.handleError)
+  }
+
+  private static handleError(error:Response | any) {
     console.error('An error occurred', error);
     return Observable.throw(error.message || error);
   }

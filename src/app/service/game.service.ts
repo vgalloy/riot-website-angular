@@ -15,17 +15,17 @@ export class GameService {
     console.log("Fetching lastGame :", Region[region], summonerId, from, to);
     return this.http.get("http://api.3csminute.com/summoner/" + Region[region] + "/" + summonerId + "/lastGames?fromMillis=" + from.getTime() + "&toMillis=" + to.getTime())
       .map(response => response.json() as LastGame[] || [])
-      .catch(this.handleError)
+      .catch(GameService.handleError)
   }
 
   getGame(gameId:string):Observable<GameModel> {
     console.log("Fetching game :", gameId);
     return this.http.get("http://api.3csminute.com/game/" + gameId)
       .map(res => res.json() as GameModel)
-      .catch(this.handleError)
+      .catch(GameService.handleError)
   }
 
-  private handleError(error:Response | any) {
+  private static handleError(error:Response | any) {
     console.error('An error occurred', error);
     return Observable.throw(error.message || error);
   }

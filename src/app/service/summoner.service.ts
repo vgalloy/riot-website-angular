@@ -14,17 +14,17 @@ export class SummonerService {
     console.log("get summoner by name", Region[region], summonerName);
     return this.http.get("http://api.3csminute.com/summoner/" + Region[region] + "/" + summonerName + "/byName")
       .map(response => response.json() as Summoner)
-      .catch(this.handleError)
+      .catch(SummonerService.handleError)
   }
 
   getSummonerById(region:Region, summonerId:number):Observable<Summoner> {
     console.log("get summoner by id", Region[region], summonerId);
     return this.http.get("http://api.3csminute.com/summoner/" + Region[region] + "/" + summonerId + "/byId")
       .map(response => response.json() as Summoner)
-      .catch(this.handleError)
+      .catch(SummonerService.handleError)
   }
 
-  private handleError(error:Response | any) {
+  private static handleError(error:Response | any) {
     console.error('An error occurred', error);
     return Observable.throw(error.message || error);
   }
