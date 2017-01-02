@@ -16,11 +16,11 @@ const appRoutes:Routes = [
         component: SummonerComponent
     },
     {
-        path: 'summoner/:region/:summonerId/gameList',
+        path: 'summoner/:summonerId/gameList',
         component: GameListComponent
     },
     {
-        path: 'summoner/:region/:summonerId/gameList/:gameId',
+        path: 'summoner/:summonerId/gameList',
         component: GameDetailComponent
     },
     {

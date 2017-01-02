@@ -15,7 +15,7 @@ export class GameListComponent implements OnInit {
   gameList:LastGame[] = [];
   selectedGamesId: string[] = [];
   name:string = "Summoner Name";
-  summonerId:number;
+  summonerId:string;
   region:Region;
 
   constructor(private route:ActivatedRoute,
@@ -34,8 +34,8 @@ export class GameListComponent implements OnInit {
       this.summonerId = summonerId;
 
       this.gameList = [];
-      this.summonerService.getSummonerById(this.region, this.summonerId)
-        .subscribe(summoner => this.name = summoner.name);
+      this.summonerService.getSummonerById(this.summonerId)
+        .subscribe(summoner => this.name = summoner.summonerName);
       this.findGame(new Date(new Date().getTime() - 30 * 24 * 3600 * 1000), new Date())
     });
   }
@@ -46,7 +46,7 @@ export class GameListComponent implements OnInit {
     }
     let region = Region.EUW;
     this.summonerService.getSummonerByName(region, this.summonerName).subscribe(summoner => {
-      this.router.navigate(['/summoner', region, summoner.id, 'gameList']);
+      this.router.navigate(['/summoner', summoner.summonerId, 'gameList']);
     });
   }
 
@@ -71,7 +71,7 @@ export class GameListComponent implements OnInit {
       return;
     } else {
       let date:Date = new Date(to.getTime() - 24 * 3600 * 1000);
-      this.gameService.getGameList(this.region, this.summonerId, date, to)
+      this.gameService.getGameList(this.summonerId, date, to)
         .subscribe(gameList => {
           this.gameList = this.gameList.concat(gameList.reverse());
           this.findGame(from, date);

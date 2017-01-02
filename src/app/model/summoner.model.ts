@@ -1,7 +1,9 @@
+import { Region } from "./region.model";
+
 export class Summoner {
-    id:number;
-    name:string;
-    profileIconId:number;
-    revisionDate:number;
+    summonerId:string;
+    summonerName:string;
+    region:Region;
     summonerLevel:number;
+    profileIconId:number;
 }

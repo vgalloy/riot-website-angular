@@ -21,7 +21,7 @@ export class SummonerComponent {
     console.log(this.summonerName);
     this.summonerService.getSummonerByName(Region.EUW, this.summonerName).subscribe(summoner => {
       this.summoner = summoner;
-      this.router.navigate(['/summoner', Region[Region.EUW], summoner.id, 'gameList']);
+      this.router.navigate(['/summoner', summoner.summonerId, 'gameList']);
     });
   }
 }
