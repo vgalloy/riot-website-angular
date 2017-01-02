@@ -1,24 +1,23 @@
-import { Injectable } from '@angular/core';
-import {GameModel} from "../model/game.model";
-import {GameService} from "./game.service";
+import { Injectable } from "@angular/core";
+import { GameModel } from "../model/game.model";
+import { GameService } from "./game.service";
+import { Observable } from "rxjs/Rx";
 
 @Injectable()
 export class CachedGameService {
 
-  private cachedGameModel:{ [key:string]:GameModel; } = {};
+  private cachedGameModel:{ [key:string]:Observable<GameModel>; } = {};
 
   constructor(private gameService:GameService) {
   }
 
-  getGame(gameId:string):GameModel {
-    let cachedResult:GameModel = this.cachedGameModel[gameId];
+  getGame(gameId:string):Observable<GameModel> {
+    let cachedResult:Observable<GameModel> = this.cachedGameModel[gameId];
     if (cachedResult != null) {
       return cachedResult;
     }
-    this.gameService.getGame(gameId)
-      .subscribe(game => {
-        this.cachedGameModel[gameId] = game;
-      });
+    let result:Observable<GameModel> = this.gameService.getGame(gameId);
+    this.cachedGameModel[gameId] = result;
+    return result;
   }
-
 }

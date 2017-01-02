@@ -32,7 +32,6 @@ export class ChampionComponent implements OnInit {
 
         let winRateId:String[] = Object.keys(this.winRates);
         for (let winRate in winRateId) {
-            console.log("(", winRate, ",", winRateId[winRate], ")");
             let id:number = Number(winRateId[winRate]);
             let item = this.winRates[id];
             item["id"] = id;

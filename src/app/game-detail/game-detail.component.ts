@@ -1,9 +1,10 @@
-import {Component, Input} from "@angular/core";
-import {CachedGameService} from "../service/cached-game.service";
-import {GameModel} from "../model/game.model";
-import {PlayerTimeline} from "../model/player-timeline.model";
-import {PositionTimedEvent} from "../model/position-timed-event.model";
-import {Position} from "../model/position.model";
+import { Component, Input } from "@angular/core";
+import { CachedGameService } from "../service/cached-game.service";
+import { GameModel } from "../model/game.model";
+import { PlayerTimeline } from "../model/player-timeline.model";
+import { PositionTimedEvent } from "../model/position-timed-event.model";
+import { Position } from "../model/position.model";
+import { Observable } from "rxjs/Rx";
 
 @Component({
   selector: 'app-game-detail',
@@ -21,14 +22,21 @@ export class GameDetailComponent {
   }
 
   updatePosition():void {
-    this.positions = this.selectedGamesId
-        .map((gameId:string) => this.cachedGameService.getGame(gameId))
-        .filter((gameModel:GameModel) => gameModel != null)
-        .map((gameModel:GameModel) => {
-          let timeline:PlayerTimeline = gameModel.gameInformation.playerTimelines.find((timeLine:PlayerTimeline) => timeLine.summonerId == this.summonerId);
-          return timeline.position.map((positionTimedEvent:PositionTimedEvent) => positionTimedEvent.value)
-        })
-        .reduce((previousValue:Position[], currentValue:Position[]) => previousValue.concat(currentValue), []);
+    let cachedObservableList:Observable<GameModel>[] = this.selectedGamesId
+        .map((gameId:string) => this.cachedGameService.getGame(gameId));
+
+    if (cachedObservableList.length == 0) {
+      this.positions = [];
+    } else {
+      Observable.forkJoin(cachedObservableList).subscribe(res => {
+        this.positions = res.filter((gameModel:GameModel) => gameModel != null)
+            .map((gameModel:GameModel) => {
+              let timeline:PlayerTimeline = gameModel.gameInformation.playerTimelines.find((timeLine:PlayerTimeline) => timeLine.summonerId == this.summonerId);
+              return timeline.position.map((positionTimedEvent:PositionTimedEvent) => positionTimedEvent.value)
+            })
+            .reduce((previousValue:Position[], currentValue:Position[]) => previousValue.concat(currentValue), []);
+      });
+    }
   }
 
   getLeft(position:Position):string {
