@@ -4,7 +4,7 @@ import { PositionTimedEvent } from "./position-timed-event.model";
 
 export class PlayerTimeline {
     region:Region;
-    playerId:number;
+    summonerId:string;
     farming:IntTimedEvent[];
     gold:IntTimedEvent[];
     position:PositionTimedEvent[];

@@ -14,19 +14,18 @@ export class GameDetailComponent {
   @Input()
   selectedGamesId:string[] = [];
   @Input()
-  playerId:number;
+  summonerId:string;
   positions:Position[] = [];
 
   constructor(private cachedGameService:CachedGameService) {
   }
 
   updatePosition():void {
-    console.log("update position", this.selectedGamesId);
     this.positions = this.selectedGamesId
         .map((gameId:string) => this.cachedGameService.getGame(gameId))
         .filter((gameModel:GameModel) => gameModel != null)
         .map((gameModel:GameModel) => {
-          let timeline:PlayerTimeline = gameModel.gameInformation.playerTimelines.find((timeLine:PlayerTimeline) => timeLine.playerId == this.playerId);
+          let timeline:PlayerTimeline = gameModel.gameInformation.playerTimelines.find((timeLine:PlayerTimeline) => timeLine.summonerId == this.summonerId);
           return timeline.position.map((positionTimedEvent:PositionTimedEvent) => positionTimedEvent.value)
         })
         .reduce((previousValue:Position[], currentValue:Position[]) => previousValue.concat(currentValue), []);

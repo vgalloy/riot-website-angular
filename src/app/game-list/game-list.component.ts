@@ -57,7 +57,6 @@ export class GameListComponent implements OnInit {
     } else {
       this.selectedGamesId.splice(index, 1);
     }
-    console.log("At the end", this.selectedGamesId);
   }
 
   /**

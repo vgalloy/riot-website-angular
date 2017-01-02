@@ -1,5 +1,5 @@
-import {Component, OnInit, Input} from "@angular/core";
-import {LastGame} from "../model/last-game.model";
+import { Component, Input } from "@angular/core";
+import { LastGame } from "../model/last-game.model";
 
 @Component({
   selector: 'app-game-summary',
@@ -13,6 +13,14 @@ export class GameSummaryComponent {
   @Input()
   set lastGame(lastGame:LastGame) {
     this._lastGame = lastGame || new LastGame();
+    this._lastGame.itemIdList = this._lastGame.itemIdList.sort((a, b) => {
+      if (a == 3340) {
+        return -1;
+      } else if (b == 3340) {
+        return 1
+      }
+      return 0;
+    })
   }
 
   get lastGame() {

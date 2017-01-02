@@ -1,12 +1,17 @@
 <div class="game-recap-header" [style.border]="getBorder()" (click)="clicked()">
-  <div class="badge-loser" *ngIf="!lastGame.winner"></div>
-  <div class="badge-winner" *ngIf="lastGame.winner"></div>
-  <img class="img-champion" src="assets/img/champion/{{lastGame.championId}}.png"/>
-  <div class="spell-column">
-    <img class="img-spell" src="assets/img/spell/{{lastGame.spell1Id}}.png">
-    <img class="img-spell" src="assets/img/spell/{{lastGame.spell2Id}}.png">
-  </div>
-  <div class="badge">
-      <div class="badge-data">{{lastGame.kill}}/{{lastGame.death}}/{{lastGame.assist}} {{lastGame.queueType}}</div>
-  </div>
+    <div class="badge-loser" *ngIf="!lastGame.winner"></div>
+    <div class="badge-winner" *ngIf="lastGame.winner"></div>
+    <img class="img-champion" src="assets/img/champion/{{lastGame.championId}}.png"/>
+    <div class="column">
+        <img class="img-spell" src="assets/img/spell/{{lastGame.spell1Id}}.png">
+        <img class="img-spell" src="assets/img/spell/{{lastGame.spell2Id}}.png">
+    </div>
+    <div class="column">
+        <div class="badge-data">{{lastGame.kill}}/{{lastGame.death}}/{{lastGame.assist}} {{lastGame.queueType}}</div>
+        <div class="item-line">
+            <div *ngFor="let itemId of lastGame.itemIdList">
+                <img class="img-item" src="assets/img/item/{{itemId}}.png">
+            </div>
+        </div>
+    </div>
 </div>

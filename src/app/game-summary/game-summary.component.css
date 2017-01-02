@@ -36,14 +36,24 @@
   transition-duration: 2s;
 }
 
-.spell-column {
+.column {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
+.item-line {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
 .img-spell {
   height:50%;
+}
+
+.img-item {
+  height:100%;
 }
 
 .img-champion {
