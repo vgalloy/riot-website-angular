@@ -1,6 +1,4 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {ActivatedRoute, Router} from "@angular/router";
-import {GameService} from "../service/game.service";
 import {ChampionService} from "../service/champion.service";
 import {WinRate} from "../model/win-rate.model";
 
@@ -13,10 +11,7 @@ export class ChampionComponent implements OnInit {
     @Input() championId:number;
     winRates:Map<number, WinRate> = new Map();
 
-    constructor(private route:ActivatedRoute,
-                private gameService:GameService,
-                private router:Router,
-                private championService:ChampionService) {
+    constructor(private championService:ChampionService) {
 
     }
 

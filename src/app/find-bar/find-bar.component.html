@@ -1,0 +1,6 @@
+<nav class="navigation">
+  <h1>{{title}}</h1>
+  <a class="navigation-title" routerLink="/summoners" routerLinkActive="active">Summoners</a>
+  <a class="navigation-title" routerLink="/champion" routerLinkActive="active">Champions</a>
+  <input [(ngModel)]="name" (ngModelChange)="onChange()"/>
+</nav>

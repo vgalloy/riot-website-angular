@@ -14,6 +14,7 @@ import {CachedGameService} from "./service/cached-game.service";
 import {SummonerService} from "./service/summoner.service";
 import {ChampionService} from "./service/champion.service";
 import {LocationStrategy, HashLocationStrategy} from "@angular/common";
+import { FindBarComponent } from './find-bar/find-bar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {LocationStrategy, HashLocationStrategy} from "@angular/common";
     ChampionComponent,
     GameListComponent,
     GameSummaryComponent,
-    SummonerComponent
+    SummonerComponent,
+    FindBarComponent
   ],
   imports: [
     BrowserModule,
