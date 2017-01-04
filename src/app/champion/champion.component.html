@@ -1,15 +1,17 @@
 <div>
-  <input [(ngModel)]="championId" placeholder="7"/>
-  <button (click)="find()">Find</button>
+    <input [(ngModel)]="championId" placeholder="7"/>
+    <button (click)="find()">Find</button>
 </div>
 <table>
     <tr>
-        <th>id</th>
+        <th>Image</th>
         <th>Win</th>
         <th>Lose</th>
     </tr>
     <tr *ngFor="let winRate of getWinRates()">
-        <th>{{winRate.id}}</th>
+        <th>
+            <img src="assets/img/champion/{{winRate.id}}.png">
+        </th>
         <th>{{winRate.win}}</th>
         <th>{{winRate.lose}}</th>
     </tr>

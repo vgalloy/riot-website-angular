@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { Http, Response } from "@angular/http";
-import { Region } from "../model/region.model";
 import { Summoner } from "../model/summoner.model";
 import { Observable } from "rxjs/Rx";
 
@@ -10,9 +9,9 @@ export class SummonerService {
     constructor(private http:Http) {
     }
 
-    getSummonerByName(region:Region, summonerName:string):Observable<Summoner> {
-        console.log("get summoner by name", Region[region], summonerName);
-        return this.http.get("http://api.3csminute.com/summoners?region=" + Region[region] + "&summonerName=" + summonerName)
+    getSummonerByName(summonerName:string):Observable<Summoner> {
+        console.log("get summoner by name", summonerName);
+        return this.http.get("http://api.3csminute.com/summoners?summonerName=" + summonerName)
             .map(response => response.json() as Summoner[])
             .map(summoners => summoners[0])
             .catch(SummonerService.handleError)

@@ -19,7 +19,7 @@ export class SummonerComponent {
 
   find():void {
     console.log(this.summonerName);
-    this.summonerService.getSummonerByName(Region.EUW, this.summonerName).subscribe(summoner => {
+    this.summonerService.getSummonerByName(this.summonerName).subscribe(summoner => {
       this.summoner = summoner;
       this.router.navigate(['/summoner', summoner.summonerId, 'gameList']);
     });

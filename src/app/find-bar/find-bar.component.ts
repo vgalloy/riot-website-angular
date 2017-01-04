@@ -1,4 +1,7 @@
 import { Component, Input } from "@angular/core";
+import { SummonerService } from "../service/summoner.service";
+import { Region } from "../model/region.model";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-find-bar',
@@ -10,10 +13,20 @@ export class FindBarComponent {
   @Input()
   name:string;
 
-  constructor() {
+  constructor(private summonerService:SummonerService,
+              private router:Router) {
   }
 
   onChange():void {
     console.log("name", this.name);
+  }
+
+  find():void {
+    this.summonerService.getSummonerByName(this.name).subscribe(
+        (summoner) => {
+          if (summoner) {
+            this.router.navigate(['/summoner', summoner.summonerId, 'gameList'])
+          }
+        })
   }
 }

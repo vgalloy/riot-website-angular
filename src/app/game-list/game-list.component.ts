@@ -45,7 +45,7 @@ export class GameListComponent implements OnInit {
       return
     }
     let region = Region.EUW;
-    this.summonerService.getSummonerByName(region, this.summonerName).subscribe(summoner => {
+    this.summonerService.getSummonerByName(this.summonerName).subscribe(summoner => {
       this.router.navigate(['/summoner', summoner.summonerId, 'gameList']);
     });
   }
