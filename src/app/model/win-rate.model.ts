@@ -1,4 +1,4 @@
 export class WinRate {
-    gamesPlayed:number;
-    winRate:number;
+    lose:number;
+    win:number;
 }
