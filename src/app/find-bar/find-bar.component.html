@@ -1,7 +1,9 @@
 <nav class="navigation">
-  <a class="navigation-title" routerLink="/" routerLinkActive="active">{{title}}</a>
-  <a class="navigation-title" routerLink="/summoners" routerLinkActive="active">Summoners</a>
-  <a class="navigation-title" routerLink="/champion" >Champions</a>
-  <input [(ngModel)]="name" (ngModelChange)="onChange()"/>
-  <button (click)="find()">Go</button>
+    <a class="title" routerLink="/" routerLinkActive="active">{{title}}</a>
+    <a routerLink="/summoners" routerLinkActive="active">Summoners</a>
+    <a routerLink="/champion">Champions</a>
+    <div class="search">
+        <input [(ngModel)]="name" (ngModelChange)="onChange()"/>
+        <button (click)="find()">Search</button>
+    </div>
 </nav>
