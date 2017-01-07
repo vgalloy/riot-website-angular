@@ -11,14 +11,14 @@ export class GameService {
   }
 
   getGameList(summonerId:string, from:Date, to:Date):Observable<LastGame[]> {
-    console.log("Fetching lastGame :", summonerId, from, to);
+    console.debug("Fetching lastGame :", summonerId, from, to);
     return this.http.get("http://api.3csminute.com/summoners/" + summonerId + "/lastGames?fromDay=" + Math.floor(from.getTime() / 3600 / 1000 / 24) + "&toDay=" + Math.floor(to.getTime() / 3600 / 1000 / 24))
         .map(response => response.json() as LastGame[] || [])
         .catch(GameService.handleError)
   }
 
   getGame(gameId:string):Observable<GameModel> {
-    console.log("Fetching game :", gameId);
+    console.debug("Fetching game :", gameId);
     return this.http.get("http://api.3csminute.com/games/" + gameId)
         .map(res => res.json() as GameModel)
         .catch(GameService.handleError)

@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="center">
+        <h1>3csminute.com</h1>
+        <div class="search">
+            <input (keyup)="onKey($event)" [(ngModel)]="searchText" placeholder="Summoner name"/>
+            <button (click)="find()">Search</button>
+        </div>
+    </div>
+</div>
+

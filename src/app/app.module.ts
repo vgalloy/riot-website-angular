@@ -15,6 +15,7 @@ import {SummonerService} from "./service/summoner.service";
 import {ChampionService} from "./service/champion.service";
 import {LocationStrategy, HashLocationStrategy} from "@angular/common";
 import { FindBarComponent } from './find-bar/find-bar.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FindBarComponent } from './find-bar/find-bar.component';
     GameListComponent,
     GameSummaryComponent,
     SummonerComponent,
-    FindBarComponent
+    FindBarComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

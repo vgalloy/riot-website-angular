@@ -10,7 +10,7 @@ export class SummonerService {
     }
 
     getSummonerByName(summonerName:string):Observable<Summoner> {
-        console.log("get summoner by name", summonerName);
+        console.debug("get summoner by name", summonerName);
         return this.http.get("http://api.3csminute.com/summoners?summonerName=" + summonerName)
             .map(response => response.json() as Summoner[])
             .map(summoners => summoners[0])
@@ -18,7 +18,7 @@ export class SummonerService {
     }
 
     getSummonerById(summonerId:string):Observable<Summoner> {
-        console.log("get summoner by id", summonerId);
+        console.debug("get summoner by id", summonerId);
         return this.http.get("http://api.3csminute.com/summoners/" + summonerId)
             .map(response => response.json() as Summoner)
             .catch(SummonerService.handleError)

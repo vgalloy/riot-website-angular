@@ -16,7 +16,7 @@ export class ChampionComponent implements OnInit {
     }
 
     ngOnInit():void {
-        this.championService.getAllChampionWinRateByDay(new Date()).subscribe(winRates => {
+        this.championService.getAllChampionWinRateByDay(new Date(new Date().getTime() - 24 * 3600 * 1000)).subscribe(winRates => {
             this.winRates = winRates;
         });
     }
