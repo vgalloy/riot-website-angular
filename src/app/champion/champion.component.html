@@ -1,19 +1,19 @@
 <app-find-bar></app-find-bar>
-<div>
-    <input [(ngModel)]="championId" placeholder="7"/>
-    <button (click)="find()">Find</button>
-</div>
 <table>
     <tr>
         <th>Image</th>
+        <th>Name</th>
         <th>Win</th>
         <th>Lose</th>
+        <th>Win rate</th>
     </tr>
-    <tr class="tmp" *ngFor="let winRate of getWinRates()">
-        <th>
-            <img src="assets/img/champion/{{winRate.id}}.png">
+    <tr *ngFor="let champion of champions">
+        <th class="tr-img">
+            <img class="champion-icon" src="assets/img/champion/{{champion.id}}.png">
         </th>
-        <th>{{winRate.win}}</th>
-        <th>{{winRate.lose}}</th>
+        <th>{{champion?.champion?.name}}</th>
+        <th>{{champion.winRate.win}}</th>
+        <th>{{champion.winRate.lose}}</th>
+        <th>{{champion.winRate.win * 100 / (champion.winRate.win + champion.winRate.lose) | number : '1.2-2'}}</th>
     </tr>
 </table>

@@ -1,9 +1,9 @@
 <nav class="navigation">
     <a class="title" routerLink="/" routerLinkActive="active">{{title}}</a>
-    <a routerLink="/summoners" routerLinkActive="active">Summoners</a>
+    <a routerLink="/" routerLinkActive="active">Summoners</a>
     <a routerLink="/champion">Champions</a>
     <div class="search">
-        <input [(ngModel)]="name" (ngModelChange)="onChange()"/>
+        <input [(ngModel)]="name" (keyup)="onKey($event)"/>
         <button (click)="find()">Search</button>
     </div>
 </nav>

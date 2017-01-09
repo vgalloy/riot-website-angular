@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ChampionService } from "../service/champion.service";
-import { WinRate } from "../model/win-rate.model";
+import { CachedChampionService } from "../service/cached-champion.service";
+import { ChampionInformationModel } from "./champion-information.model";
 
 @Component({
     selector: 'app-champion',
@@ -9,36 +10,33 @@ import { WinRate } from "../model/win-rate.model";
 })
 export class ChampionComponent implements OnInit {
     @Input() championId:number;
-    winRates:Map<number, WinRate> = new Map();
+    champions:ChampionInformationModel[] = [];
 
-    constructor(private championService:ChampionService) {
+    constructor(private championService:ChampionService,
+                private cachedChampionService:CachedChampionService) {
 
     }
 
     ngOnInit():void {
         this.championService.getAllChampionWinRateByDay(new Date(new Date().getTime() - 24 * 3600 * 1000)).subscribe(winRates => {
-            this.winRates = winRates;
+            let result:ChampionInformationModel[] = [];
+
+            let winRateId:String[] = Object.keys(winRates);
+            for (let winRate in winRateId) {
+                let id:number = Number(winRateId[winRate]);
+                let item:ChampionInformationModel = new ChampionInformationModel();
+                item.winRate = winRates[id];
+                item.id = id;
+                result.push(item);
+                this.updateChampionInformation(item);
+            }
+            result = result.sort((a, b) => b.winRate.win / (b.winRate.win + b.winRate.lose) - a.winRate.win / (a.winRate.win + a.winRate.lose));
+            this.champions = result;
         });
     }
 
-    getWinRates() {
-        let result = [];
-
-        let winRateId:String[] = Object.keys(this.winRates);
-        for (let winRate in winRateId) {
-            let id:number = Number(winRateId[winRate]);
-            let item = this.winRates[id];
-            item["id"] = id;
-            result.push(item);
-        }
-        result = result.sort((a, b) => b.win / (b.win + b.lose) - a.win / (a.win + a.lose));
-        return result;
-    }
-
-    find():void {
-        console.log(this.championId);
-        this.championService.getWinRate(this.championId).subscribe(winRates => {
-            console.log(winRates);
-        });
+    private updateChampionInformation(championInformation:ChampionInformationModel) {
+        this.cachedChampionService.getChampion(championInformation.id)
+            .subscribe(champion => championInformation.champion = champion);
     }
 }

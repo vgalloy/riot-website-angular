@@ -16,7 +16,6 @@ export class GameListComponent implements OnInit {
   selectedGamesId: string[] = [];
   name:string = "Summoner Name";
   summonerId:string;
-  region:Region;
 
   constructor(private route:ActivatedRoute,
               private gameService:GameService,
@@ -27,25 +26,12 @@ export class GameListComponent implements OnInit {
 
   ngOnInit():void {
     this.route.params.forEach((params:Params) => {
-      let summonerId = params['summonerId'];
-      let regionString:string = params['region'];
-
-      this.region = Region[regionString];
-      this.summonerId = summonerId;
+      this.summonerId = params['summonerId'];
 
       this.gameList = [];
       this.summonerService.getSummonerById(this.summonerId)
         .subscribe(summoner => this.name = summoner.summonerName);
       this.findGame(new Date(new Date().getTime() - 30 * 24 * 3600 * 1000), new Date())
-    });
-  }
-
-  find():void {
-    if (!this.summonerName) {
-      return
-    }
-    this.summonerService.getSummonerByName(this.summonerName).subscribe(summoner => {
-      this.router.navigate(['/summoner', summoner.summonerId, 'gameList']);
     });
   }
 

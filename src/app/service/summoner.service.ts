@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Http, Response } from "@angular/http";
 import { Summoner } from "../model/summoner.model";
 import { Observable } from "rxjs/Rx";
+import { ChampionRankedModel } from "../model/champion-ranked.model";
 
 @Injectable()
 export class SummonerService {
@@ -11,9 +12,16 @@ export class SummonerService {
 
     getSummonerByName(summonerName:string):Observable<Summoner> {
         console.debug("get summoner by name", summonerName);
-        return this.http.get("http://api.3csminute.com/summoners?summonerName=" + summonerName)
+        return this.http.get("http://api.3csminute.com/summoners?regions=EUW&summonerNames=" + summonerName)
             .map(response => response.json() as Summoner[])
             .map(summoners => summoners[0])
+            .catch(SummonerService.handleError)
+    }
+
+    getSummonerRankedStatsById(summonerId:string):Observable<Summoner> {
+        console.debug("get summoner ranked stats by is", summonerId);
+        return this.http.get("http://api.3csminute.com/summoners/" + summonerId + "/rankedStats")
+            .map(response => response.json() as ChampionRankedModel)
             .catch(SummonerService.handleError)
     }
 

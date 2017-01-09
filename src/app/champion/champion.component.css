@@ -1,12 +1,19 @@
 table {
-    width: 100%;
+    margin: auto;
+    width: 30%;
     border-collapse: collapse;
+    background-color: grey;
 }
 
 tr {
     border: 2px solid black;
 }
 
-.tmp {
-    background-color: grey;
+.champion-icon {
+    height: 30px;
+    margin: 5px;
+}
+
+.tr-img {
+    font-size: 0;
 }

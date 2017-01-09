@@ -28,7 +28,7 @@ export class LandingPageComponent {
       this.summonerService.getSummonerByName(this.searchText).subscribe(
           (summoner) => {
             if (summoner) {
-              this.router.navigate(['/summoner', summoner.summonerId, 'gameList'])
+              this.router.navigate(['/summoner', summoner.summonerId])
             }
           })
     }

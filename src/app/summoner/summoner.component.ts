@@ -1,27 +1,28 @@
-import {Component, Input} from "@angular/core";
-import {Summoner} from "../model/summoner.model";
-import {SummonerService} from "../service/summoner.service";
-import {Router} from "@angular/router";
-import {Region} from "../model/region.model";
+import { Component, OnInit } from "@angular/core";
+import { SummonerService } from "../service/summoner.service";
+import { Router, Params, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-summoner',
   templateUrl: './summoner.component.html',
   styleUrls: ['./summoner.component.css']
 })
-export class SummonerComponent {
-  @Input() summonerName:string = "Ivaranne";
-  summoner:Summoner;
+export class SummonerComponent implements OnInit {
+  summonerId:string;
 
-  constructor(private summonerService:SummonerService, private router:Router) {
+  constructor(private summonerService:SummonerService,
+              private router:Router,
+              private route:ActivatedRoute) {
 
   }
 
-  find():void {
-    console.log(this.summonerName);
-    this.summonerService.getSummonerByName(this.summonerName).subscribe(summoner => {
-      this.summoner = summoner;
-      this.router.navigate(['/summoner', summoner.summonerId, 'gameList']);
+  ngOnInit():void {
+    this.route.params.forEach((params:Params) => {
+      this.summonerId = params['summonerId'];
     });
+  }
+
+  move():void {
+    this.router.navigate(['/summoner', this.summonerId, 'gameList']);
   }
 }

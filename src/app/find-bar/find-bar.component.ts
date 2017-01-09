@@ -1,6 +1,5 @@
 import { Component, Input } from "@angular/core";
 import { SummonerService } from "../service/summoner.service";
-import { Region } from "../model/region.model";
 import { Router } from "@angular/router";
 
 @Component({
@@ -17,8 +16,10 @@ export class FindBarComponent {
               private router:Router) {
   }
 
-  onChange():void {
-    console.log("name", this.name);
+  onKey(event:any):void {
+    if (event.key === "Enter") {
+      this.find();
+    }
   }
 
   find():void {

@@ -12,16 +12,12 @@ const appRoutes:Routes = [
         component: LandingPageComponent
     },
     {
-        path: 'summoners',
+        path: 'summoner/:summonerId',
         component: SummonerComponent
     },
     {
         path: 'summoner/:summonerId/gameList',
         component: GameListComponent
-    },
-    {
-        path: 'summoner/:summonerId/gameList',
-        component: GameDetailComponent
     },
     {
         path: 'champion',
