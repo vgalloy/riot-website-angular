@@ -5,7 +5,7 @@ USER root
 WORKDIR /usr/src/app
 RUN npm install -g angular-cli
 
-ADD build /usr/src/app
+ADD . /usr/src/app
 RUN npm install
 
 EXPOSE 3000
