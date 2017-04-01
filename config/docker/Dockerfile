@@ -1,4 +1,4 @@
-FROM node:6.9.1-slim
+FROM node:7.8
 
 USER root
 
