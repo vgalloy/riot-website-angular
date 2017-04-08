@@ -10,7 +10,6 @@ import {SummonerService} from "../service/summoner.service";
   styleUrls: ['./game-list.component.css']
 })
 export class GameListComponent implements OnInit {
-  @Input() summonerName:string;
   gameList:LastGame[] = [];
   selectedGamesId: string[] = [];
   name:string = "Summoner Name";
@@ -29,7 +28,7 @@ export class GameListComponent implements OnInit {
       this.gameList = [];
       this.summonerService.getSummonerById(this.summonerId)
         .subscribe(summoner => this.name = summoner.summonerName);
-      this.findGame(new Date(new Date().getTime() - 30 * 24 * 3600 * 1000), new Date())
+      this.findGame(new Date(new Date().getTime() - 30 * 24 * 3600 * 1000), new Date());
     });
   }
 

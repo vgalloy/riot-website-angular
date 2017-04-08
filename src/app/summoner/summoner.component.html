@@ -1,4 +1,8 @@
+<app-find-bar></app-find-bar>
 <div>
     Display summoner information
+    <div> Name : {{summoner?.summonerName}}</div>
+    <div>Profile icon id{{summoner?.profileIconId}}</div>
+    <div>Level : {{summoner?.summonerLevel}}</div>
     <button (click)="move()">Game list</button>
 </div>

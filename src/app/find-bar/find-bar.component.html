@@ -3,7 +3,7 @@
     <a routerLink="/" routerLinkActive="active">Summoners</a>
     <a routerLink="/champion">Champions</a>
     <div class="search">
-        <input [(ngModel)]="name" (keyup)="onKey($event)"/>
-        <button (click)="find()">Search</button>
+        <input [(ngModel)]="name" (keyup)="onKey($event)" placeholder="Summoner, champion, ..."/>
+        <button (click)="find()"><i class="fa fa-search"></i></button>
     </div>
 </nav>
