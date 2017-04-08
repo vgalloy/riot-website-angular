@@ -1,7 +1,6 @@
 import {Component, OnInit, Input} from "@angular/core";
 import {LastGame} from "../model/last-game.model";
-import {Region} from "../model/region.model";
-import {ActivatedRoute, Router, Params} from "@angular/router";
+import {ActivatedRoute, Params} from "@angular/router";
 import {GameService} from "../service/game.service";
 import {SummonerService} from "../service/summoner.service";
 
@@ -19,7 +18,6 @@ export class GameListComponent implements OnInit {
 
   constructor(private route:ActivatedRoute,
               private gameService:GameService,
-              private router:Router,
               private summonerService:SummonerService) {
 
   }
