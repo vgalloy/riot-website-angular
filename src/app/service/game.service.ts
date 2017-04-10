@@ -16,7 +16,6 @@ export class GameService {
   }
 
   getGameList(summonerId: string, from: Date, to: Date): Observable<LastGame[]> {
-    console.debug('Fetching lastGame :', summonerId, from, to);
     let dateFrom: number = Math.floor(from.getTime() / 3600 / 1000 / 24);
     let dateTo: number = Math.floor(to.getTime() / 3600 / 1000 / 24);
     return this.http.get('http://api.3csminute.com/summoners/' + summonerId + '/lastGames?fromDay=' + dateFrom + '&toDay=' + dateTo)
@@ -25,7 +24,6 @@ export class GameService {
   }
 
   getGame(gameId: string): Observable<GameModel> {
-    console.debug('Fetching game :', gameId);
     return this.http.get('http://api.3csminute.com/games/' + gameId)
         .map(res => res.json() as GameModel)
         .catch(GameService.handleError);

@@ -12,6 +12,10 @@ export class ChampionComponent implements OnInit {
     @Input() championId: number;
     champions: ChampionInformationModel[] = [];
 
+    private static computePercentage(a: ChampionInformationModel): number {
+        return a.winRate.win / (a.winRate.win + a.winRate.lose);
+    }
+
     constructor(private championService: ChampionService,
                 private cachedChampionService: CachedChampionService) {
 
@@ -20,17 +24,16 @@ export class ChampionComponent implements OnInit {
     ngOnInit(): void {
         this.championService.getAllChampionWinRateByDay(new Date(new Date().getTime() - 24 * 3600 * 1000)).subscribe(winRates => {
             let result: ChampionInformationModel[] = [];
-
             let winRateId: String[] = Object.keys(winRates);
-            for (let winRate in winRateId) {
+            winRateId.forEach(function (winRate: string) {
                 let id: number = Number(winRateId[winRate]);
                 let item: ChampionInformationModel = new ChampionInformationModel();
                 item.winRate = winRates[id];
                 item.id = id;
                 result.push(item);
                 this.updateChampionInformation(item);
-            }
-            result = result.sort((a, b) => b.winRate.win / (b.winRate.win + b.winRate.lose) - a.winRate.win / (a.winRate.win + a.winRate.lose));
+            });
+            result = result.sort((a, b) => ChampionComponent.computePercentage(b) - ChampionComponent.computePercentage(a));
             this.champions = result;
         });
     }

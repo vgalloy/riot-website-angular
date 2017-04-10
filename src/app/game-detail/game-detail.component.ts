@@ -12,38 +12,39 @@ import { Observable } from 'rxjs/Rx';
   styleUrls: ['./game-detail.component.css']
 })
 export class GameDetailComponent {
-  @Input()
-  selectedGamesId: string[] = [];
-  @Input()
-  summonerId: string;
-  positions: Position[] = [];
+    @Input()
+    selectedGamesId: string[] = [];
+    @Input()
+    summonerId: string;
+    positions: Position[] = [];
 
-  constructor(private cachedGameService: CachedGameService) {
-  }
-
-  updatePosition(): void {
-    let cachedObservableList: Observable<GameModel>[] = this.selectedGamesId
-        .map((gameId: string) => this.cachedGameService.getGame(gameId));
-
-    if (cachedObservableList.length === 0) {
-      this.positions = [];
-    } else {
-      Observable.forkJoin(cachedObservableList).subscribe(res => {
-        this.positions = res.filter((gameModel: GameModel) => gameModel != null)
-            .map((gameModel: GameModel) => {
-              let timeline: PlayerTimeline = gameModel.gameInformation.playerTimelines.find((timeLine: PlayerTimeline) => timeLine.summonerId === this.summonerId);
-              return timeline.position.map((positionTimedEvent: PositionTimedEvent) => positionTimedEvent.value);
-            })
-            .reduce((previousValue: Position[], currentValue: Position[]) => previousValue.concat(currentValue), []);
-      });
+    constructor(private cachedGameService: CachedGameService) {
     }
-  }
 
-  getLeft(position: Position): string {
-    return ((position.x + 120) * 100 / 14990) + '%';
-  }
+    updatePosition(): void {
+        let cachedObservableList: Observable<GameModel>[] = this.selectedGamesId
+            .map((gameId: string) => this.cachedGameService.getGame(gameId));
 
-  getTop(position: Position): string {
-    return (100 - ((position.y + 120) * 100 / 15100)) + '%';
-  }
+        if (cachedObservableList.length === 0) {
+            this.positions = [];
+        } else {
+            Observable.forkJoin(cachedObservableList).subscribe(res => {
+                this.positions = res.filter((gameModel: GameModel) => gameModel != null)
+                    .map((gameModel: GameModel) => {
+                        let timeline: PlayerTimeline = gameModel.gameInformation.playerTimelines
+                            .find((timeLine: PlayerTimeline) => timeLine.summonerId === this.summonerId);
+                        return timeline.position.map((positionTimedEvent: PositionTimedEvent) => positionTimedEvent.value);
+                    })
+                    .reduce((previousValue: Position[], currentValue: Position[]) => previousValue.concat(currentValue), []);
+            });
+        }
+    }
+
+    getLeft(position: Position): string {
+        return ((position.x + 120) * 100 / 14990) + '%';
+    }
+
+    getTop(position: Position): string {
+        return (100 - ((position.y + 120) * 100 / 15100)) + '%';
+    }
 }
