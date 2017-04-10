@@ -1,7 +1,7 @@
-import { Component, Input } from "@angular/core";
-import { SummonerService } from "../service/summoner.service";
-import { Router } from "@angular/router";
-import { isNullOrUndefined } from "util";
+import { Component, Input } from '@angular/core';
+import { SummonerService } from '../service/summoner.service';
+import { Router } from '@angular/router';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-landing-page',

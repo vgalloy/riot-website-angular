@@ -1,10 +1,10 @@
-import { Component, Input } from "@angular/core";
-import { CachedGameService } from "../service/cached-game.service";
-import { GameModel } from "../model/game.model";
-import { PlayerTimeline } from "../model/player-timeline.model";
-import { PositionTimedEvent } from "../model/position-timed-event.model";
-import { Position } from "../model/position.model";
-import { Observable } from "rxjs/Rx";
+import { Component, Input } from '@angular/core';
+import { CachedGameService } from '../service/cached-game.service';
+import { GameModel } from '../model/game.model';
+import { PlayerTimeline } from '../model/player-timeline.model';
+import { PositionTimedEvent } from '../model/position-timed-event.model';
+import { Position } from '../model/position.model';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-game-detail',
@@ -13,16 +13,16 @@ import { Observable } from "rxjs/Rx";
 })
 export class GameDetailComponent {
   @Input()
-  selectedGamesId:string[] = [];
+  selectedGamesId: string[] = [];
   @Input()
-  summonerId:string;
-  positions:Position[] = [];
+  summonerId: string;
+  positions: Position[] = [];
 
-  constructor(private cachedGameService:CachedGameService) {
+  constructor(private cachedGameService: CachedGameService) {
   }
 
   updatePosition():void {
-    let cachedObservableList:Observable<GameModel>[] = this.selectedGamesId
+    let cachedObservableList: Observable<GameModel>[] = this.selectedGamesId
         .map((gameId:string) => this.cachedGameService.getGame(gameId));
 
     if (cachedObservableList.length == 0) {
@@ -30,20 +30,20 @@ export class GameDetailComponent {
     } else {
       Observable.forkJoin(cachedObservableList).subscribe(res => {
         this.positions = res.filter((gameModel:GameModel) => gameModel != null)
-            .map((gameModel:GameModel) => {
-              let timeline:PlayerTimeline = gameModel.gameInformation.playerTimelines.find((timeLine:PlayerTimeline) => timeLine.summonerId == this.summonerId);
-              return timeline.position.map((positionTimedEvent:PositionTimedEvent) => positionTimedEvent.value)
+            .map((gameModel: GameModel) => {
+              let timeline: PlayerTimeline = gameModel.gameInformation.playerTimelines.find((timeLine:PlayerTimeline) => timeLine.summonerId == this.summonerId);
+              return timeline.position.map((positionTimedEvent:PositionTimedEvent) => positionTimedEvent.value);
             })
-            .reduce((previousValue:Position[], currentValue:Position[]) => previousValue.concat(currentValue), []);
+            .reduce((previousValue:Position[], currentValue: Position[]) => previousValue.concat(currentValue), []);
       });
     }
   }
 
   getLeft(position:Position):string {
-    return ((position.x + 120) * 100 / 14990) + "%";
+    return ((position.x + 120) * 100 / 14990) + '%';
   }
 
   getTop(position:Position):string {
-    return (100 - ((position.y + 120) * 100 / 15100)) + "%";
+    return (100 - ((position.y + 120) * 100 / 15100)) + '%';
   }
 }

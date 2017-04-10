@@ -1,5 +1,6 @@
-import { ChampionRankedStatsModel } from "./champion-ranked-stats.model";
+import { ChampionRankedStatsModel } from './champion-ranked-stats.model';
+
 export class ChampionRankedModel {
-    id:number;
-    stats:ChampionRankedStatsModel[];
+    id: number;
+    stats: ChampionRankedStatsModel[];
 }

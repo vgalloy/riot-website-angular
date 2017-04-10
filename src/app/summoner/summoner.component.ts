@@ -1,7 +1,8 @@
-import {Component, OnInit} from "@angular/core";
-import {SummonerService} from "../service/summoner.service";
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {Summoner} from "../model/summoner.model";
+import {Component, OnInit} from '@angular/core';
+import {SummonerService} from '../service/summoner.service';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {Summoner} from '../model/summoner.model';
+import {RankedStatsModel} from '../model/ranked-stats.model';
 
 @Component({
     selector: 'app-summoner',
@@ -11,6 +12,7 @@ import {Summoner} from "../model/summoner.model";
 export class SummonerComponent implements OnInit {
     summonerId: string;
     summoner: Summoner;
+    rankedStart: RankedStatsModel;
 
     constructor(private summonerService: SummonerService,
                 private router: Router,
@@ -24,6 +26,12 @@ export class SummonerComponent implements OnInit {
         });
         this.summonerService.getSummonerById(this.summonerId)
             .subscribe(summoner => this.summoner = summoner);
+        this.summonerService.getSummonerRankedStatsById(this.summonerId)
+            .subscribe(rankedStat => {
+                //  this.rankedStart = rankedStat;*
+                console.log('OK');
+                console.log(this.rankedStart);
+            });
     }
 
     move(): void {

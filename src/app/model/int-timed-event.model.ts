@@ -1,4 +1,4 @@
 export class IntTimedEvent {
-    timestamp:number;
-    value:number;
+    timestamp: number;
+    value: number;
 }

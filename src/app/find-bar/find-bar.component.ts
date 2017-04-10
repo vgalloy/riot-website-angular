@@ -1,6 +1,6 @@
-import { Component, Input } from "@angular/core";
-import { SummonerService } from "../service/summoner.service";
-import { Router } from "@angular/router";
+import { Component, Input } from '@angular/core';
+import { SummonerService } from '../service/summoner.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-find-bar',
@@ -8,16 +8,16 @@ import { Router } from "@angular/router";
   styleUrls: ['./find-bar.component.css']
 })
 export class FindBarComponent {
-  title:string = "3cs minute";
+  title: string = '3cs minute';
   @Input()
-  name:string;
+  name: string;
 
-  constructor(private summonerService:SummonerService,
+  constructor(private summonerService: SummonerService,
               private router:Router) {
   }
 
   onKey(event:any):void {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       this.find();
     }
   }

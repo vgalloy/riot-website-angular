@@ -1,4 +1,4 @@
-import { Region } from "./region.model";
+import { Region } from './region.model';
 
 export class Summoner {
     summonerId:string;

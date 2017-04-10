@@ -1,4 +1,4 @@
-import {PlayerTimeline} from "./player-timeline.model";
+import { PlayerTimeline } from './player-timeline.model';
 export class GameInformationModel {
     playerTimelines:PlayerTimeline[];
 }

@@ -1,12 +1,12 @@
 export class LastGame {
-    assist:number;
-    championId:number;
-    death:number;
-    gameId:string;
-    kill:number;
-    winner:boolean;
-    queueType:string;
-    spell1Id:number;
-    spell2Id:number;
-    itemIdList:number[];
+    assist: number;
+    championId: number;
+    death: number;
+    gameId: string;
+    kill: number;
+    winner: boolean;
+    queueType: string;
+    spell1Id: number;
+    spell2Id: number;
+    itemIdList: number[];
 }

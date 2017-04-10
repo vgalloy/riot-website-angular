@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs/Rx";
-import { ChampionModel } from "../model/champion.model";
-import { ChampionService } from "./champion.service";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
+import { ChampionModel } from '../model/champion.model';
+import { ChampionService } from './champion.service';
 
 @Injectable()
 export class CachedChampionService {

@@ -1,4 +1,4 @@
 export class WinRate {
-    lose:number;
-    win:number;
+    lose: number;
+    win: number;
 }

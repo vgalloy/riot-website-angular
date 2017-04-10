@@ -1,5 +1,5 @@
-import { Component, Input } from "@angular/core";
-import { LastGame } from "../model/last-game.model";
+import { Component, Input } from '@angular/core';
+import { LastGame } from '../model/last-game.model';
 
 @Component({
   selector: 'app-game-summary',
