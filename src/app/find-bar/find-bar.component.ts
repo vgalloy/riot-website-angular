@@ -8,26 +8,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./find-bar.component.css']
 })
 export class FindBarComponent {
-  title: string = '3cs minute';
+  title = '3cs minute';
   @Input()
   name: string;
 
   constructor(private summonerService: SummonerService,
-              private router:Router) {
+              private router: Router) {
   }
 
-  onKey(event:any):void {
+  onKey(event: any): void {
     if (event.key === 'Enter') {
       this.find();
     }
   }
 
-  find():void {
+  find(): void {
     this.summonerService.getSummonerByName(this.name).subscribe(
         (summoner) => {
           if (summoner) {
-            this.router.navigate(['/summoner', summoner.summonerId, 'gameList'])
+            this.router.navigate(['/summoner', summoner.summonerId, 'gameList']);
           }
-        })
+        });
   }
 }

@@ -9,7 +9,7 @@ import { ChampionInformationModel } from './champion-information.model';
     styleUrls: ['./champion.component.css']
 })
 export class ChampionComponent implements OnInit {
-    @Input() championId :number;
+    @Input() championId: number;
     champions: ChampionInformationModel[] = [];
 
     constructor(private championService: ChampionService,
@@ -17,7 +17,7 @@ export class ChampionComponent implements OnInit {
 
     }
 
-    ngOnInit():void {
+    ngOnInit(): void {
         this.championService.getAllChampionWinRateByDay(new Date(new Date().getTime() - 24 * 3600 * 1000)).subscribe(winRates => {
             let result: ChampionInformationModel[] = [];
 
@@ -35,7 +35,7 @@ export class ChampionComponent implements OnInit {
         });
     }
 
-    private updateChampionInformation(championInformation:ChampionInformationModel) {
+    private updateChampionInformation(championInformation: ChampionInformationModel) {
         this.cachedChampionService.getChampion(championInformation.id)
             .subscribe(champion => championInformation.champion = champion);
     }

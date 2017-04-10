@@ -12,7 +12,7 @@ import { SummonerService } from '../service/summoner.service';
 export class GameListComponent implements OnInit {
   gameList: LastGame[] = [];
   selectedGamesId:  string[] = [];
-  name: string = 'Summoner Name';
+  name = 'Summoner Name';
   summonerId: string;
 
   constructor(private route: ActivatedRoute,

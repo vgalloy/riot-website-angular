@@ -1,6 +1,6 @@
-import { Position } from "./position.model";
+import { Position } from './position.model';
 
 export class PositionTimedEvent {
-    timestamp:number;
-    value:Position;
+    timestamp: number;
+    value: Position;
 }

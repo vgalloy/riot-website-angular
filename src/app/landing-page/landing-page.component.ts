@@ -11,26 +11,26 @@ import { isNullOrUndefined } from 'util';
 export class LandingPageComponent {
 
   @Input()
-  searchText:string;
+  searchText: string;
 
-  constructor(private summonerService:SummonerService,
-              private router:Router) {
+  constructor(private summonerService: SummonerService,
+              private router: Router) {
   }
 
-  onKey(event:any):void {
-    if (event.key === "Enter") {
+  onKey(event: any): void {
+    if (event.key === 'Enter') {
       this.find();
     }
   }
 
-  find():void {
+  find(): void {
     if (!isNullOrUndefined(this.searchText)) {
       this.summonerService.getSummonerByName(this.searchText).subscribe(
           (summoner) => {
             if (summoner) {
-              this.router.navigate(['/summoner', summoner.summonerId])
+              this.router.navigate(['/summoner', summoner.summonerId]);
             }
-          })
+          });
     }
   }
 }

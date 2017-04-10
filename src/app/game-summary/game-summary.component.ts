@@ -7,34 +7,34 @@ import { LastGame } from '../model/last-game.model';
   styleUrls: ['./game-summary.component.css']
 })
 export class GameSummaryComponent {
-  _lastGame:LastGame;
-  selected:boolean = false;
+  _lastGame: LastGame;
+  selected = false;
 
   @Input()
-  set lastGame(lastGame:LastGame) {
+  set lastGame(lastGame: LastGame) {
     this._lastGame = lastGame || new LastGame();
     this._lastGame.itemIdList = this._lastGame.itemIdList.sort((a, b) => {
-      if (a == 3340) {
+      if (a === 3340) {
         return -1;
-      } else if (b == 3340) {
-        return 1
+      } else if (b === 3340) {
+        return 1;
       }
       return 0;
-    })
+    });
   }
 
   get lastGame() {
     return this._lastGame;
   }
 
-  clicked():void {
+  clicked(): void {
     this.selected = !this.selected;
   }
 
-  getBorder():string {
+  getBorder(): string {
     if (this.selected) {
-      return "2px solid yellow";
+      return '2px solid yellow';
     }
-    return "2px solid";
+    return '2px solid';
   }
 }

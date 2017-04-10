@@ -1,6 +1,6 @@
-import {GameInformationModel} from './game-information.model';
+import { GameInformationModel } from './game-information.model';
 export class GameModel {
-    gameId:string;
-    lastUpdate:number;
-    gameInformation:GameInformationModel;
+    gameId: string;
+    lastUpdate: number;
+    gameInformation: GameInformationModel;
 }

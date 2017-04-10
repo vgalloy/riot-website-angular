@@ -21,29 +21,29 @@ export class GameDetailComponent {
   constructor(private cachedGameService: CachedGameService) {
   }
 
-  updatePosition():void {
+  updatePosition(): void {
     let cachedObservableList: Observable<GameModel>[] = this.selectedGamesId
-        .map((gameId:string) => this.cachedGameService.getGame(gameId));
+        .map((gameId: string) => this.cachedGameService.getGame(gameId));
 
-    if (cachedObservableList.length == 0) {
+    if (cachedObservableList.length === 0) {
       this.positions = [];
     } else {
       Observable.forkJoin(cachedObservableList).subscribe(res => {
-        this.positions = res.filter((gameModel:GameModel) => gameModel != null)
+        this.positions = res.filter((gameModel: GameModel) => gameModel != null)
             .map((gameModel: GameModel) => {
-              let timeline: PlayerTimeline = gameModel.gameInformation.playerTimelines.find((timeLine:PlayerTimeline) => timeLine.summonerId == this.summonerId);
-              return timeline.position.map((positionTimedEvent:PositionTimedEvent) => positionTimedEvent.value);
+              let timeline: PlayerTimeline = gameModel.gameInformation.playerTimelines.find((timeLine: PlayerTimeline) => timeLine.summonerId === this.summonerId);
+              return timeline.position.map((positionTimedEvent: PositionTimedEvent) => positionTimedEvent.value);
             })
-            .reduce((previousValue:Position[], currentValue: Position[]) => previousValue.concat(currentValue), []);
+            .reduce((previousValue: Position[], currentValue: Position[]) => previousValue.concat(currentValue), []);
       });
     }
   }
 
-  getLeft(position:Position):string {
+  getLeft(position: Position): string {
     return ((position.x + 120) * 100 / 14990) + '%';
   }
 
-  getTop(position:Position):string {
+  getTop(position: Position): string {
     return (100 - ((position.y + 120) * 100 / 15100)) + '%';
   }
 }
