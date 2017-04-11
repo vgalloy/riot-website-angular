@@ -1,22 +1,22 @@
 .column {
-  display: inline-block;
-  vertical-align: text-top;
-  font-size: 16px;
+    display: inline-block;
+    vertical-align: text-top;
+    font-size: 16px;
 }
 
 .global-game-list {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .game-summary-list {
-  width: 800px;
+    width: 800px;
 }
 
 .li-game-summary {
-  display: block;
-  height: 50px;
-  margin: 5px;
+    display: block;
+    height: 50px;
+    margin: 5px;
 }
 
 .game-details {
@@ -24,5 +24,5 @@
 }
 
 .games {
-  overflow:auto;
+    overflow: auto;
 }

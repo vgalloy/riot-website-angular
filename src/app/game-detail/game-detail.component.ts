@@ -7,9 +7,9 @@ import { Position } from '../model/position.model';
 import { Observable } from 'rxjs/Rx';
 
 @Component({
-  selector: 'app-game-detail',
-  templateUrl: './game-detail.component.html',
-  styleUrls: ['./game-detail.component.css']
+    selector: 'app-game-detail',
+    templateUrl: './game-detail.component.html',
+    styleUrls: ['./game-detail.component.css']
 })
 export class GameDetailComponent {
     @Input()

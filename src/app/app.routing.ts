@@ -1,5 +1,5 @@
 import { ModuleWithProviders } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { SummonerComponent } from './summoner/summoner.component';
 import { GameListComponent } from './game-list/game-list.component';
 import { ChampionComponent } from './champion/champion.component';

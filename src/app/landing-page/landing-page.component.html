@@ -5,6 +5,9 @@
             <input (keyup)="onKey($event)" [(ngModel)]="searchText" placeholder="Summoner, champion, ..."/>
             <button (click)="find()"><i class="fa fa-search"></i></button>
         </div>
+        <div class="error" [hidden]="!displayError">
+            <span>Error can not found summoner with this name</span>
+        </div>
     </div>
 </div>
 

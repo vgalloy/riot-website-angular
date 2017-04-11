@@ -15,10 +15,9 @@ export class SummonerService {
     constructor(private http: Http) {
     }
 
-    getSummonerByName(summonerName: string): Observable<Summoner> {
+    getSummonersByName(summonerName: string): Observable<Summoner[]> {
         return this.http.get('http://api.3csminute.com/summoners?regions=EUW&summonerNames=' + summonerName)
             .map(response => response.json() as Summoner[])
-            .map(summoners => summoners[0])
             .catch(SummonerService.handleError);
     }
 

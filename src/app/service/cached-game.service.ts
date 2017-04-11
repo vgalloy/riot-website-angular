@@ -6,18 +6,18 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class CachedGameService {
 
-  private cachedGameModel: { [key: string]: Observable<GameModel>; } = {};
+    private cachedGameModel: { [key: string]: Observable<GameModel>; } = {};
 
-  constructor(private gameService: GameService) {
-  }
-
-  getGame(gameId: string): Observable<GameModel> {
-    let cachedResult: Observable<GameModel> = this.cachedGameModel[gameId];
-    if (cachedResult != null) {
-      return cachedResult;
+    constructor(private gameService: GameService) {
     }
-    let result: Observable<GameModel> = this.gameService.getGame(gameId);
-    this.cachedGameModel[gameId] = result;
-    return result;
-  }
+
+    getGame(gameId: string): Observable<GameModel> {
+        let cachedResult: Observable<GameModel> = this.cachedGameModel[gameId];
+        if (cachedResult != null) {
+            return cachedResult;
+        }
+        let result: Observable<GameModel> = this.gameService.getGame(gameId);
+        this.cachedGameModel[gameId] = result;
+        return result;
+    }
 }

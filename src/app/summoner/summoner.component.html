@@ -4,4 +4,10 @@
     <div class="nanme">{{summoner?.summonerName}}</div>
     <div>Level : {{summoner?.summonerLevel}}</div>
     <button (click)="move()">Game list</button>
+
+    <ul>
+        <li *ngFor="let champion of rankedStat?.champions">
+            {{champion.id}} {{champion.stats.totalSessionsPlayed}}
+        </li>
+    </ul>
 </div>

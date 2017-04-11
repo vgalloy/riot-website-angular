@@ -3,31 +3,31 @@ import { SummonerService } from '../service/summoner.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-find-bar',
-  templateUrl: './find-bar.component.html',
-  styleUrls: ['./find-bar.component.css']
+    selector: 'app-find-bar',
+    templateUrl: './find-bar.component.html',
+    styleUrls: ['./find-bar.component.css']
 })
 export class FindBarComponent {
-  title = '3cs minute';
-  @Input()
-  name: string;
+    title = '3cs minute';
+    @Input()
+    name: string;
 
-  constructor(private summonerService: SummonerService,
-              private router: Router) {
-  }
-
-  onKey(event: any): void {
-    if (event.key === 'Enter') {
-      this.find();
+    constructor(private summonerService: SummonerService,
+                private router: Router) {
     }
-  }
 
-  find(): void {
-    this.summonerService.getSummonerByName(this.name).subscribe(
-        (summoner) => {
-          if (summoner) {
-            this.router.navigate(['/summoner', summoner.summonerId, 'gameList']);
-          }
-        });
-  }
+    onKey(event: any): void {
+        if (event.key === 'Enter') {
+            this.find();
+        }
+    }
+
+    find(): void {
+        this.summonerService.getSummonersByName(this.name).subscribe(
+            (summoner) => {
+                if (summoner.length !== 0) {
+                    this.router.navigate(['/summoner', summoner[0].summonerId, 'gameList']);
+                }
+            });
+    }
 }

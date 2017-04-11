@@ -13,37 +13,37 @@ import { GameService } from './service/game.service';
 import { CachedGameService } from './service/cached-game.service';
 import { SummonerService } from './service/summoner.service';
 import { ChampionService } from './service/champion.service';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { FindBarComponent } from './find-bar/find-bar.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { CachedChampionService } from './service/cached-champion.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    GameDetailComponent,
-    ChampionComponent,
-    GameListComponent,
-    GameSummaryComponent,
-    SummonerComponent,
-    FindBarComponent,
-    LandingPageComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    routing
-  ],
-  providers: [
-    {provide: LocationStrategy, useClass: HashLocationStrategy},
-    GameService,
-    CachedGameService,
-    CachedChampionService,
-    SummonerService,
-    ChampionService
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        GameDetailComponent,
+        ChampionComponent,
+        GameListComponent,
+        GameSummaryComponent,
+        SummonerComponent,
+        FindBarComponent,
+        LandingPageComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        routing
+    ],
+    providers: [
+        {provide: LocationStrategy, useClass: HashLocationStrategy},
+        GameService,
+        CachedGameService,
+        CachedChampionService,
+        SummonerService,
+        ChampionService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }
