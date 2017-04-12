@@ -17,6 +17,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { FindBarComponent } from './find-bar/find-bar.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { CachedChampionService } from './service/cached-champion.service';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
     declarations: [
@@ -30,6 +31,7 @@ import { CachedChampionService } from './service/cached-champion.service';
         LandingPageComponent
     ],
     imports: [
+        ChartsModule,
         BrowserModule,
         FormsModule,
         HttpModule,

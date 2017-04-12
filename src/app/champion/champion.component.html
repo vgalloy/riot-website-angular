@@ -1,4 +1,5 @@
 <app-find-bar></app-find-bar>
+<div class = "main">
 <table>
     <tr>
         <th>Image</th>
@@ -7,7 +8,7 @@
         <th>Lose</th>
         <th>Win rate</th>
     </tr>
-    <tr *ngFor="let champion of champions">
+    <tr *ngFor="let champion of champions" [ngClass]="getBackGround(champion.id)" (click)="onSelect(champion.id)">
         <th class="tr-img">
             <img class="champion-icon" src="assets/img/champion/{{champion.id}}.png">
         </th>
@@ -17,3 +18,17 @@
         <th>{{champion.winRate.win * 100 / (champion.winRate.win + champion.winRate.lose) | number : '1.2-2'}}</th>
     </tr>
 </table>
+
+<div>
+    <canvas baseChart width="400" height="400"
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [colors]="lineChartColors"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)">
+    </canvas>
+</div>
+</div>
