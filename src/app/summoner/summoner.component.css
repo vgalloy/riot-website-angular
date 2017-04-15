@@ -1,3 +1,17 @@
+.summoner-information {
+    display: flex;
+    flex-direction: row;
+}
+
 .name {
     font-size: 18px;
+}
+
+table {
+    margin: 10px;
+}
+
+.champion-icon {
+    height: 30px;
+    margin: 3px;
 }

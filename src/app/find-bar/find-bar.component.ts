@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
     styleUrls: ['./find-bar.component.css']
 })
 export class FindBarComponent {
-    title = '3cs minute';
     @Input()
     name: string;
 

@@ -1,6 +1,8 @@
 <nav class="navigation">
-    <a class="title" routerLink="/" routerLinkActive="active">{{title}}</a>
-    <a routerLink="/" routerLinkActive="active">Summoners</a>
+    <a class="title" routerLink="/" routerLinkActive="active">3csminute</a>
+    <a routerLink="/" routerLinkActive="active">
+        <span>Summoners</span>
+    </a>
     <a routerLink="/champion">Champions</a>
     <div class="search">
         <input [(ngModel)]="name" (keyup)="onKey($event)" placeholder="Summoner, champion, ..."/>

@@ -1,13 +1,24 @@
 <app-find-bar></app-find-bar>
 <div>
-    <img class="img-icon" src="assets/img/profileicon/{{summoner?.profileIconId}}.png">
-    <div class="nanme">{{summoner?.summonerName}}</div>
-    <div>Level : {{summoner?.summonerLevel}}</div>
+    <div class="summoner-information">
+        <img class="img-icon" src="assets/img/profileicon/{{summoner?.profileIconId}}.png">
+        <div class="name">{{summoner?.summonerName}}</div>
+        <div>Level : {{summoner?.summonerLevel}}</div>
+    </div>
     <button (click)="move()">Game list</button>
 
-    <ul>
-        <li *ngFor="let champion of rankedStat?.champions">
-            {{champion.id}} {{champion.stats.totalSessionsPlayed}}
-        </li>
-    </ul>
+    <table>
+        <tr>
+            <th>Image</th>
+            <th>Win</th>
+            <th>Lose</th>
+        </tr>
+        <tr *ngFor="let champion of rankedStat?.champions">
+            <th class="tr-img">
+                <img class="champion-icon" src="assets/img/champion/{{champion.id}}.png">
+            </th>
+            <th>{{champion.stats.totalSessionsWon}}</th>
+            <th>{{champion.stats.totalSessionsLose}}</th>
+        </tr>
+    </table>
 </div>
