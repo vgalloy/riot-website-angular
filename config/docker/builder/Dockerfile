@@ -7,4 +7,4 @@ WORKDIR /usr/src/app
 ADD . /usr/src/app
 RUN npm install
 
-CMD ["npm", "run", "ng", "--", "build", "-prod"]
+CMD ["npm", "run", "ng", "--", "build", "--prod"]
