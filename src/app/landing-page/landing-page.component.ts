@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { SummonerService } from '../service/summoner.service';
 import { Router } from '@angular/router';
 import { isNullOrUndefined } from 'util';
+import { ChampionService } from '../service/champion.service';
+import { Region } from '../model/region.model';
 
 @Component({
     selector: 'app-landing-page',
@@ -15,6 +17,7 @@ export class LandingPageComponent {
     displayError = false;
 
     constructor(private summonerService: SummonerService,
+                private championService: ChampionService,
                 private router: Router) {
     }
 
@@ -22,6 +25,8 @@ export class LandingPageComponent {
         if (event.key === 'Enter') {
             this.find();
         }
+        this.championService.autoComplete(this.searchText, Region.EUW)
+            .subscribe(result => console.log(result));
     }
 
     find(): void {
