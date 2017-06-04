@@ -4,11 +4,11 @@ import { CachedChampionService } from '../service/cached-champion.service';
 import { ChampionInformationModel } from './champion-information.model';
 
 @Component({
-    selector: 'app-champion',
-    templateUrl: './champion.component.html',
-    styleUrls: ['./champion.component.css']
+    selector: 'champions-list',
+    templateUrl: './champions-list.component.html',
+    styleUrls: ['./champions-list.component.css']
 })
-export class ChampionComponent implements OnInit {
+export class ChampionsListComponent implements OnInit {
     @Input() championId: number;
     champions: ChampionInformationModel[] = [];
     private championIds: number[] = [];
@@ -33,7 +33,7 @@ export class ChampionComponent implements OnInit {
                         this.updateChampionInformation(item);
                         return item;
                     })
-                    .sort((a, b) => ChampionComponent.computePercentage(b) - ChampionComponent.computePercentage(a));
+                    .sort((a, b) => ChampionsListComponent.computePercentage(b) - ChampionsListComponent.computePercentage(a));
             });
     }
 

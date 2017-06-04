@@ -1,9 +1,9 @@
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SummonerComponent } from './summoner/summoner.component';
-import { GameListComponent } from './game-list/game-list.component';
-import { ChampionComponent } from './champion/champion.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import { SummonerComponent } from '../summoner/summoner/summoner.component';
+import { GameListComponent } from '../summoner/game-list/game-list.component';
+import { ChampionsListComponent } from '../champion/champion-list/champions-list.component';
+import { LandingPageComponent } from '../landing-page/landing-page.component';
 
 const appRoutes: Routes = [
     {
@@ -20,7 +20,7 @@ const appRoutes: Routes = [
     },
     {
         path: 'champion',
-        component: ChampionComponent
+        component: ChampionsListComponent
     }
 ];
 

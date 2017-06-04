@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Summoner } from '../model/summoner.model';
+import { Summoner } from '../../model/summoner.model';
 import { Observable } from 'rxjs/Rx';
-import { RankedStatsModel } from '../model/ranked-stats.model';
+import { RankedStatsModel } from '../../model/ranked-stats.model';
+import { ErrorModel } from '../../model/error.model';
 
 @Injectable()
 export class SummonerService {
 
     private static handleError(error: Response | any) {
-        console.error('An error occurred', error);
+        let parsedError: ErrorModel = error.json() as ErrorModel;
+        console.error('An error occurred', parsedError);
         return Observable.throw(error.message || error);
     }
 

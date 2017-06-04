@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { CachedGameService } from '../service/cached-game.service';
-import { GameModel } from '../model/game.model';
-import { PlayerTimeline } from '../model/player-timeline.model';
-import { PositionTimedEvent } from '../model/position-timed-event.model';
-import { Position } from '../model/position.model';
+import { GameModel } from '../../model/game.model';
+import { PlayerTimeline } from '../../model/player-timeline.model';
+import { PositionTimedEvent } from '../../model/position-timed-event.model';
+import { Position } from '../../model/position.model';
 import { Observable } from 'rxjs/Rx';
 
 @Component({

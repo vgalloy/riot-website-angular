@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LastGame } from '../model/last-game.model';
+import { LastGame } from '../../model/last-game.model';
 import { ActivatedRoute, Params } from '@angular/router';
 import { GameService } from '../service/game.service';
-import { SummonerService } from '../service/summoner.service';
+import { SummonerService } from '../../common/service/summoner.service';
 
 @Component({
     selector: 'app-game-list',

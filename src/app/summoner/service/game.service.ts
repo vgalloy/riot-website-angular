@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { LastGame } from '../model/last-game.model';
-import { GameModel } from '../model/game.model';
+import { LastGame } from '../../model/last-game.model';
+import { GameModel } from '../../model/game.model';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 

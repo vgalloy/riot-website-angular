@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SummonerService } from '../service/summoner.service';
+import { SummonerService } from '../../common/service/summoner.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Summoner } from '../model/summoner.model';
-import { RankedStatsModel } from '../model/ranked-stats.model';
+import { Summoner } from '../../model/summoner.model';
+import { RankedStatsModel } from '../../model/ranked-stats.model';
 
 @Component({
     selector: 'app-summoner',

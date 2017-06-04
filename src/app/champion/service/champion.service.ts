@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { WinRate } from '../model/win-rate.model';
+import { WinRate } from '../../model/win-rate.model';
 import { Observable } from 'rxjs/Rx';
-import { ChampionModel } from '../model/champion.model';
-import { ChampionName } from '../model/champion-name.model';
-import { Region } from '../model/region.model';
+import { ChampionModel } from '../../model/champion.model';
+import { ChampionName } from '../../model/champion-name.model';
+import { Region } from '../../model/region.model';
 
 @Injectable()
 export class ChampionService {
